@@ -1,0 +1,32 @@
+{
+  "repo": "SunoDify",
+  "provider_id": "acedatacloud/suno/suno",
+  "icon_sha256": "c8e5df1efc145a675290c4a8441e8fe24b33ca939efc060f2aeaed414c3001c2",
+  "tool_ids": [
+    "suno_generate_audios",
+    "suno_task_retrieve"
+  ],
+  "localized_labels": true,
+  "credential_validation": "passed",
+  "workflow_results": [
+    {
+      "case": "suno-generate-result",
+      "task_id": "95a81d9a-2b30-4b2e-ab9c-2b60474703f6",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "image_files": 0
+    },
+    {
+      "case": "suno-custom-result",
+      "task_id": "8439b6f3-7738-410d-a77b-1a4c72387895",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "image_files": 0
+    }
+  ],
+  "new_paid_generations": 0,
+  "environment": "Dify CE 1.17.1 remote-debug + console API workflows",
+  "browser_ui_tested": false,
+  "marketplace_install_tested": false,
+  "prior_paid_case_payloads_unchanged": true
+}

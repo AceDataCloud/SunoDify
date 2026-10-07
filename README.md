@@ -1,4 +1,21 @@
-# Suno by Ace Data Cloud
+# Suno
+
+**Author:** acedatacloud
+
+**Type:** tool provider plugin
+
+**API:** `https://api.acedata.cloud/suno/audios`
+
+## Tools
+
+| Tool ID | Purpose | Inputs |
+|---|---|---|
+| `suno_generate_audios` | Suno Generate Audios | `prompt`, `model`, `custom`, `lyric`, `title`, `style`, `instrumental`, `duration` |
+| `suno_task_retrieve` | Suno Retrieve Task | `task_id`, `wait_seconds` |
+
+Outputs include `status`, `task_id`, `media_urls`, `result`, and the earlier plugin conventions `success`, `trace_id`, `data`. `success` is true only when results are complete; failures raise tool errors.
+
+The credential field is `acedata_bearer_token`; paste the token without the `Bearer ` prefix.
 
 Generate Suno music from descriptions or custom lyrics with Ace Data Cloud. Maintained by Ace Data Cloud. This is a free Dify tool plugin; API use requires your own Ace Data Cloud account and may incur usage charges.
 
@@ -37,3 +54,7 @@ Python 3.12 and `dify-plugin==0.9.1` are required. Default models and listed opt
 - License: MIT
 
 Development: install `requirements.txt`, run `python -m pytest tests -q`, `ruff check .`, and `dify plugin package .`. Test results and limits are recorded in the submission PR; Marketplace publication is separate from local validation.
+
+## Earlier Dify plugin conventions
+
+This repository follows the earlier service-specific icon, tool naming, Bearer Token credential, bilingual metadata and code layout. The tool table above defines this release's scope; it does not restore all historical tools or the private fork's release workflows.

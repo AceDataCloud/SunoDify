@@ -3,12 +3,17 @@ type: plugin
 author: acedatacloud
 name: suno
 label:
-  en_US: Suno by Ace Data Cloud
-  zh_Hans: Suno by Ace Data Cloud
+  en_US: Suno
+  ja_JP: Suno
+  zh_Hans: Suno
+  pt_BR: Suno
 description:
-  en_US: Generate Suno music from descriptions or custom lyrics with Ace Data Cloud.
-icon: icon.png
-icon_dark: icon.png
+  en_US: Generate music via Ace Data Cloud Suno APIs.
+  ja_JP: Ace Data Cloud Suno API を使って音楽生成を行います。
+  zh_Hans: 通过 Ace Data Cloud Suno API 生成音乐。
+  pt_BR: Gere músicas via Ace Data Cloud Suno APIs.
+icon: icon.jpg
+icon_dark: icon.jpg
 resource:
   memory: 268435456
   permission:
