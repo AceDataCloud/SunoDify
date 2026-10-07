@@ -1,0 +1,152 @@
+identity:
+  name: suno_generate_audios
+  author: acedatacloud
+  label:
+    en_US: Suno Generate Audios
+    zh_Hans: Suno 生成歌曲
+description:
+  human:
+    en_US: Generate songs with Ace Data Cloud Suno Audios API.
+    zh_Hans: 通过 Ace Data Cloud Suno Audios API 生成歌曲。
+  llm: Generate songs via Ace Data Cloud Suno Audios API. Returns a task_id and song
+    metadata (audio_url/image_url/lyric/etc). Returns a task ID; use the task retrieval
+    tool to obtain completed media. Never repeat a pending submission.
+parameters:
+- name: prompt
+  label:
+    en_US: Prompt
+    zh_Hans: 提示词
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Music description
+    zh_Hans: 描述希望生成的歌曲；启用自定义模式后可留空。
+  llm_description: Music description
+- name: model
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  type: select
+  required: false
+  form: form
+  human_description:
+    en_US: Select the model. Available models, access and pricing are shown in the
+      Ace Data Cloud console.
+    zh_Hans: 选择要调用的模型。模型权限和价格以 Ace Data Cloud 控制台为准。
+  llm_description: Select the model. Available models, access and pricing are shown
+    in the Ace Data Cloud console.
+  default: chirp-v6
+  options:
+  - value: chirp-v6
+    label:
+      en_US: chirp-v6
+      zh_Hans: chirp-v6
+  - value: chirp-v6-wild
+    label:
+      en_US: chirp-v6-wild
+      zh_Hans: chirp-v6-wild
+  - value: chirp-v6-mini
+    label:
+      en_US: chirp-v6-mini
+      zh_Hans: chirp-v6-mini
+  - value: chirp-v5-5
+    label:
+      en_US: chirp-v5-5
+      zh_Hans: chirp-v5-5
+  - value: chirp-v5
+    label:
+      en_US: chirp-v5
+      zh_Hans: chirp-v5
+- name: custom
+  label:
+    en_US: Custom Mode
+    zh_Hans: 自定义模式
+  type: boolean
+  required: false
+  form: form
+  human_description:
+    en_US: Use style and custom lyrics when enabled; otherwise describe the song in
+      the prompt.
+    zh_Hans: 启用后使用风格和自定义歌词；关闭时使用提示词描述歌曲。
+  llm_description: Use style and custom lyrics when enabled; otherwise describe the
+    song in the prompt.
+  default: false
+- name: lyric
+  label:
+    en_US: Lyric
+    zh_Hans: 歌词
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Lyrics for custom mode; omit for instrumental music.
+    zh_Hans: 自定义模式下的歌词；纯音乐模式可留空。
+  llm_description: Lyrics for custom mode; omit for instrumental music.
+- name: title
+  label:
+    en_US: Title
+    zh_Hans: 标题
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Title of the generated song.
+    zh_Hans: 生成歌曲的标题。
+  llm_description: Title of the generated song.
+- name: style
+  label:
+    en_US: Style
+    zh_Hans: 风格
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Describe the genre, tempo and instruments.
+    zh_Hans: 歌曲风格，例如曲风、节奏和乐器。
+  llm_description: Describe the genre, tempo and instruments.
+- name: instrumental
+  label:
+    en_US: Instrumental
+    zh_Hans: 纯音乐
+  type: boolean
+  required: false
+  form: form
+  human_description:
+    en_US: Generate instrumental music without vocals.
+    zh_Hans: 仅生成伴奏，不包含人声。
+  llm_description: Generate instrumental music without vocals.
+  default: false
+- name: duration
+  label:
+    en_US: Duration
+    zh_Hans: 时长
+  type: number
+  required: false
+  form: form
+  human_description:
+    en_US: 10–360 seconds; a target rather than a guaranteed output length.
+    zh_Hans: 目标时长为 10–360 秒，实际音频长度可能不同。
+  llm_description: 10–360 seconds; a target rather than a guaranteed output length.
+  default: 30
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    task_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    result:
+      type: object
+    success:
+      type: boolean
+    trace_id:
+      type: string
+    data: {}
+extra:
+  python:
+    source: tools/suno_generate_audios.py

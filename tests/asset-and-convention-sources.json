@@ -1,0 +1,26 @@
+{
+  "id": "suno",
+  "title": "Suno",
+  "origin": {
+    "repository": "AceDataCloud/Dify",
+    "revision": "eaf0e68cd34cfe4cadece7a9ee34a98aac6b961e^",
+    "path": "plugins/suno/_assets/icon.jpg"
+  },
+  "icons": {
+    "icon.jpg": "c8e5df1efc145a675290c4a8441e8fe24b33ca939efc060f2aeaed414c3001c2"
+  },
+  "tools": [
+    {
+      "operation": "generate",
+      "file": "suno_generate_audios",
+      "id": "suno_generate_audios",
+      "class": "SunoGenerateAudiosTool"
+    },
+    {
+      "operation": "task",
+      "file": "suno_task_retrieve",
+      "id": "suno_task_retrieve",
+      "class": "SunoTaskRetrieveTool"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "label": "suno-generate",
+    "operation": "generate",
+    "parameters": {
+      "prompt": "A short gentle instrumental piano melody for a sunrise, no vocals.",
+      "model": "chirp-v6",
+      "instrumental": true,
+      "duration": 10
+    }
+  },
+  {
+    "label": "suno-custom",
+    "operation": "generate",
+    "parameters": {
+      "custom": true,
+      "title": "Small Steps",
+      "style": "soft acoustic folk, short melody, warm vocal",
+      "lyric": "[Verse]\nSmall steps in the morning light\nWe build a little song tonight\n[Outro]\nOne bright note and we are done",
+      "model": "chirp-v6",
+      "duration": 10,
+      "instrumental": false
+    }
+  }
+]
