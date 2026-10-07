@@ -1,0 +1,68 @@
+identity:
+  name: suno_delete_persona
+  author: acedatacloud
+  label:
+    en_US: Suno Delete Persona
+    zh_Hans: Suno 删除 Persona
+description:
+  human:
+    en_US: Delete Persona through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Delete Persona。
+  llm: Delete Persona through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: persona_id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Persona Id
+    zh_Hans: Persona ID
+  human_description:
+    en_US: Set persona id for this operation.
+    zh_Hans: 设置Persona ID。
+  llm_description: Set persona id for this operation.
+- name: user_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: User Id
+    zh_Hans: 用户 ID
+  human_description:
+    en_US: Set user id for this operation.
+    zh_Hans: 设置用户 ID。
+  llm_description: Set user id for this operation.
+- name: confirm
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Confirm
+    zh_Hans: 确认删除或归档
+  human_description:
+    en_US: Set true only to confirm the selected deletion or archive operation.
+    zh_Hans: 仅在确认执行删除或归档操作时设为 true。
+  llm_description: Set true only to confirm the selected deletion or archive operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_delete_persona.py

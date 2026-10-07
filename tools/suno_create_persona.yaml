@@ -1,0 +1,101 @@
+identity:
+  name: suno_create_persona
+  author: acedatacloud
+  label:
+    en_US: Suno Create Persona
+    zh_Hans: Suno 创建 Persona
+description:
+  human:
+    en_US: Create Persona through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Create Persona。
+  llm: Create Persona through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: name
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Name
+    zh_Hans: 名称
+  human_description:
+    en_US: Set name for this operation.
+    zh_Hans: 歌手风格的名称。
+  llm_description: Set name for this operation.
+- name: audio_id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Audio Id
+    zh_Hans: 音频 ID
+  human_description:
+    en_US: Set audio id for this operation.
+    zh_Hans: 用于创建歌手风格的已生成歌曲 ID。
+  llm_description: Set audio id for this operation.
+- name: vox_audio_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Vox Audio Id
+    zh_Hans: Vox 音频 ID
+  human_description:
+    en_US: Set vox audio id for this operation.
+    zh_Hans: 用于生成新歌手风格的音频 ID（人声参考音频）。
+  llm_description: Set vox audio id for this operation.
+- name: vocal_start
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Vocal Start
+    zh_Hans: 人声片段开始
+  human_description:
+    en_US: Set vocal start for this operation.
+    zh_Hans: 音频中人声片段的起始时间（秒）。
+  llm_description: Set vocal start for this operation.
+- name: vocal_end
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Vocal End
+    zh_Hans: 人声片段结束
+  human_description:
+    en_US: Set vocal end for this operation.
+    zh_Hans: 音频中人声片段的结束时间（秒）。
+  llm_description: Set vocal end for this operation.
+- name: description
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Description
+    zh_Hans: 描述
+  human_description:
+    en_US: Set description for this operation.
+    zh_Hans: 对歌手风格的文字描述。
+  llm_description: Set description for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_create_persona.py

@@ -9,10 +9,10 @@ from dify_plugin.entities.tool import ToolInvokeMessage
 from tools.acedata_client import AceDataSunoClient
 
 
-class SunoGenerateAudiosTool(Tool):
+class SunoListPersonasTool(Tool):
     def _invoke(self, tool_parameters: dict[str, Any]) -> Generator[ToolInvokeMessage, None, None]:
         result = AceDataSunoClient(self.runtime.credentials.get("acedata_bearer_token", "")).invoke(
-            "suno_generate_audios", tool_parameters
+            "suno_list_personas", tool_parameters
         )
         yield self.create_json_message(result)
         for name, value in result.items():

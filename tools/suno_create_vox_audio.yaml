@@ -1,0 +1,80 @@
+identity:
+  name: suno_create_vox_audio
+  author: acedatacloud
+  label:
+    en_US: Suno Create Vox Audio
+    zh_Hans: Suno 提取人声片段
+description:
+  human:
+    en_US: Create Vox Audio through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Create Vox Audio。
+  llm: Create Vox Audio through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: audio_id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Audio Id
+    zh_Hans: 音频 ID
+  human_description:
+    en_US: Set audio id for this operation.
+    zh_Hans: 用于提取人声的源音频 ID，即待处理的 Suno 音频片段的唯一标识。
+  llm_description: Set audio id for this operation.
+- name: vocal_start
+  type: number
+  required: true
+  form: form
+  label:
+    en_US: Vocal Start
+    zh_Hans: 人声片段开始
+  human_description:
+    en_US: Set vocal start for this operation.
+    zh_Hans: 必填。人声提取的起始时间点（单位：秒），必须大于或等于 0。
+  llm_description: Set vocal start for this operation.
+  min: 0
+- name: vocal_end
+  type: number
+  required: true
+  form: form
+  label:
+    en_US: Vocal End
+    zh_Hans: 人声片段结束
+  human_description:
+    en_US: Set vocal end for this operation.
+    zh_Hans: 必填。人声提取的结束时间点（单位：秒），必须大于起始时间，且提取区间必须短于 30 秒。
+  llm_description: Set vocal end for this operation.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 用于接收处理结果的回调地址。若未指定，结果将直接在响应体中返回。
+  llm_description: Set callback url for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_create_vox_audio.py

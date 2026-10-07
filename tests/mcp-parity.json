@@ -1,0 +1,564 @@
+{
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "mapping": [
+    {
+      "mcp_tool": "suno_list_models",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "suno_list_actions",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "suno_get_lyric_format_guide",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "suno_generate_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "model": "model",
+        "instrumental": "instrumental",
+        "variation_category": "variation_category",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=generate"
+    },
+    {
+      "mcp_tool": "suno_generate_custom_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "lyric": "lyric",
+        "title": "title",
+        "style": "style",
+        "model": "model",
+        "instrumental": "instrumental",
+        "lyric_prompt": "lyric_prompt",
+        "negative_tags": "negative_tags",
+        "vocal_gender": "vocal_gender",
+        "variation_category": "variation_category",
+        "weirdness": "weirdness",
+        "style_influence": "style_influence",
+        "duration": "duration",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=generate"
+    },
+    {
+      "mcp_tool": "suno_extend_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "lyric": "lyric",
+        "continue_at": "continue_at",
+        "style": "style",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=extend"
+    },
+    {
+      "mcp_tool": "suno_cover_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "prompt": "prompt",
+        "style": "style",
+        "model": "model",
+        "audio_weight": "audio_weight",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=cover"
+    },
+    {
+      "mcp_tool": "suno_concat_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=concat"
+    },
+    {
+      "mcp_tool": "suno_generate_with_persona",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "persona_id": "persona_id",
+        "prompt": "prompt",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=artist_consistency"
+    },
+    {
+      "mcp_tool": "suno_remaster_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "variation_category": "variation_category",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=remaster"
+    },
+    {
+      "mcp_tool": "suno_stems_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=stems"
+    },
+    {
+      "mcp_tool": "suno_replace_section",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "replace_section_start": "replace_section_start",
+        "replace_section_end": "replace_section_end",
+        "lyric": "lyric",
+        "style": "style",
+        "model": "model",
+        "callback_url": "callback_url",
+        "result_mode": "replace_section_result_mode"
+      },
+      "unresolved": [],
+      "note": "Set action=replace_section"
+    },
+    {
+      "mcp_tool": "suno_upload_extend",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "lyric": "lyric",
+        "continue_at": "continue_at",
+        "style": "style",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=upload_extend"
+    },
+    {
+      "mcp_tool": "suno_upload_cover",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "style": "style",
+        "model": "model",
+        "audio_weight": "audio_weight",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=upload_cover"
+    },
+    {
+      "mcp_tool": "suno_mashup_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "mashup_audio_ids": "mashup_audio_ids",
+        "prompt": "prompt",
+        "style": "style",
+        "title": "title",
+        "instrumental": "instrumental",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=mashup"
+    },
+    {
+      "mcp_tool": "suno_all_stems_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=all_stems"
+    },
+    {
+      "mcp_tool": "suno_generate_with_persona_vox",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "persona_id": "persona_id",
+        "prompt": "prompt",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=artist_consistency_vox"
+    },
+    {
+      "mcp_tool": "suno_underpainting",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "underpainting_start": "underpainting_start",
+        "underpainting_end": "underpainting_end",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=underpainting"
+    },
+    {
+      "mcp_tool": "suno_overpainting",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "overpainting_start": "overpainting_start",
+        "overpainting_end": "overpainting_end",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=overpainting"
+    },
+    {
+      "mcp_tool": "suno_samples_music",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "samples_start": "samples_start",
+        "samples_end": "samples_end",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=samples"
+    },
+    {
+      "mcp_tool": "suno_generate_inspo",
+      "dify_tools": [
+        "suno_generate_audios"
+      ],
+      "parameters": {
+        "audio_urls": "audio_urls",
+        "prompt": "prompt",
+        "title": "title",
+        "style": "style",
+        "model": "model",
+        "audio_weight": "audio_weight",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=inspo"
+    },
+    {
+      "mcp_tool": "suno_generate_lyrics",
+      "dify_tools": [
+        "suno_generate_lyrics"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "model": "model"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_get_task",
+      "dify_tools": [
+        "suno_task_retrieve"
+      ],
+      "parameters": {
+        "task_id": "task_id"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve"
+    },
+    {
+      "mcp_tool": "suno_get_tasks_batch",
+      "dify_tools": [
+        "suno_tasks_retrieve_batch"
+      ],
+      "parameters": {
+        "task_ids": "ids"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve_batch"
+    },
+    {
+      "mcp_tool": "suno_get_mp4",
+      "dify_tools": [
+        "suno_get_mp4"
+      ],
+      "parameters": {
+        "audio_id": "audio_id"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_get_timing",
+      "dify_tools": [
+        "suno_get_timing"
+      ],
+      "parameters": {
+        "audio_id": "audio_id"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_extract_vocals",
+      "dify_tools": [
+        "suno_create_vox_audio"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "vocal_start": "vocal_start",
+        "vocal_end": "vocal_end",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_get_wav",
+      "dify_tools": [
+        "suno_get_wav"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_get_mp3",
+      "dify_tools": [
+        "suno_get_mp3"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_get_midi",
+      "dify_tools": [
+        "suno_get_midi"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_optimize_style",
+      "dify_tools": [
+        "suno_enhance_style"
+      ],
+      "parameters": {
+        "prompt": "prompt"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_mashup_lyrics",
+      "dify_tools": [
+        "suno_mashup_lyrics"
+      ],
+      "parameters": {
+        "lyrics_a": "lyrics_a",
+        "lyrics_b": "lyrics_b"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_upload_audio",
+      "dify_tools": [
+        "suno_upload_reference_audio"
+      ],
+      "parameters": {
+        "audio_url": "audio_url",
+        "mode": "mode",
+        "name": "name",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_create_voice",
+      "dify_tools": [
+        "suno_create_voice"
+      ],
+      "parameters": {
+        "audio_url": "audio_url",
+        "name": "name",
+        "description": "description"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_create_persona",
+      "dify_tools": [
+        "suno_create_persona"
+      ],
+      "parameters": {
+        "audio_id": "audio_id",
+        "name": "name",
+        "vox_audio_id": "vox_audio_id",
+        "vocal_start": "vocal_start",
+        "vocal_end": "vocal_end",
+        "description": "description"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_list_personas",
+      "dify_tools": [
+        "suno_list_personas"
+      ],
+      "parameters": {
+        "user_id": "user_id",
+        "limit": "limit",
+        "offset": "offset"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_delete_persona",
+      "dify_tools": [
+        "suno_delete_persona"
+      ],
+      "parameters": {
+        "persona_id": "persona_id",
+        "user_id": "user_id"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "suno_create_custom_model",
+      "dify_tools": [
+        "suno_custom_models"
+      ],
+      "parameters": {
+        "name": "name",
+        "audio_urls": "audio_urls",
+        "callback_url": "callback_url",
+        "idempotency_key": "idempotency_key"
+      },
+      "unresolved": [],
+      "note": "Set action=create"
+    },
+    {
+      "mcp_tool": "suno_get_custom_model",
+      "dify_tools": [
+        "suno_custom_models"
+      ],
+      "parameters": {
+        "model_id": "id"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve"
+    },
+    {
+      "mcp_tool": "suno_list_custom_models",
+      "dify_tools": [
+        "suno_custom_models"
+      ],
+      "parameters": {
+        "limit": "limit",
+        "offset": "offset",
+        "status": "status"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve_batch"
+    },
+    {
+      "mcp_tool": "suno_generate_with_custom_model",
+      "dify_tools": [
+        "suno_custom_models"
+      ],
+      "parameters": {
+        "model_id": "id",
+        "title": "title",
+        "lyric": "lyric",
+        "style": "style"
+      },
+      "unresolved": [],
+      "note": "Set action=generate"
+    },
+    {
+      "mcp_tool": "suno_archive_custom_model",
+      "dify_tools": [
+        "suno_custom_models"
+      ],
+      "parameters": {
+        "model_id": "id"
+      },
+      "unresolved": [],
+      "note": "Set action=delete"
+    }
+  ]
+}

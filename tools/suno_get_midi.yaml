@@ -1,0 +1,57 @@
+identity:
+  name: suno_get_midi
+  author: acedatacloud
+  label:
+    en_US: Suno Get Midi
+    zh_Hans: Suno 获取 MIDI
+description:
+  human:
+    en_US: Get Midi through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Get Midi。
+  llm: Get Midi through the Ace Data Cloud Suno API. For asynchronous results, preserve
+    task_id and use the task retrieval tool until completion. A successful submission
+    is not completed output.
+parameters:
+- name: audio_id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Audio Id
+    zh_Hans: 音频 ID
+  human_description:
+    en_US: Set audio id for this operation.
+    zh_Hans: 用于生成 MIDI 的源音频 ID，将基于该已有音频提取 MIDI 内容。
+  llm_description: Set audio id for this operation.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 用于接收处理结果的回调地址。若未指定，结果将直接在响应体中返回。
+  llm_description: Set callback url for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_get_midi.py
