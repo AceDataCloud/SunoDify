@@ -1,0 +1,27 @@
+identity:
+  author: acedatacloud
+  name: suno
+  label:
+    en_US: Suno by Ace Data Cloud
+  description:
+    en_US: Generate Suno music from descriptions or custom lyrics with Ace Data Cloud.
+  icon: icon.png
+  icon_dark: icon.png
+  tags:
+  - entertainment
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: Ace Data Cloud API key
+      zh_Hans: Ace Data Cloud API Key
+    help:
+      en_US: Create a service or global API key authorized for this service.
+    url: https://platform.acedata.cloud/console/credentials
+tools:
+- tools/generate.yaml
+- tools/task.yaml
+extra:
+  python:
+    source: provider/provider.py

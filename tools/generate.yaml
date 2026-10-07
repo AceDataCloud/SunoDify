@@ -1,0 +1,119 @@
+identity:
+  name: suno_generate
+  author: acedatacloud
+  label:
+    en_US: Generate music
+description:
+  human:
+    en_US: Generate music through Suno by Ace Data Cloud.
+  llm: Generate music through Suno by Ace Data Cloud. Generation returns a task ID;
+    use Retrieve or wait for task for the final result.
+parameters:
+- name: prompt
+  label:
+    en_US: Music description
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Music description
+  llm_description: Music description
+- name: model
+  label:
+    en_US: Model
+  type: select
+  required: false
+  form: form
+  human_description:
+    en_US: Model
+  llm_description: Model
+  default: chirp-v6
+  options:
+  - value: chirp-v6
+    label:
+      en_US: chirp-v6
+  - value: chirp-v6-wild
+    label:
+      en_US: chirp-v6-wild
+  - value: chirp-v6-mini
+    label:
+      en_US: chirp-v6-mini
+  - value: chirp-v5-5
+    label:
+      en_US: chirp-v5-5
+  - value: chirp-v5
+    label:
+      en_US: chirp-v5
+- name: custom
+  label:
+    en_US: Custom lyrics mode
+  type: boolean
+  required: false
+  form: form
+  human_description:
+    en_US: Custom lyrics mode
+  llm_description: Custom lyrics mode
+  default: false
+- name: lyric
+  label:
+    en_US: Lyrics
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Lyrics
+  llm_description: Lyrics
+- name: title
+  label:
+    en_US: Title
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Title
+  llm_description: Title
+- name: style
+  label:
+    en_US: Style
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Style
+  llm_description: Style
+- name: instrumental
+  label:
+    en_US: Instrumental
+  type: boolean
+  required: false
+  form: form
+  human_description:
+    en_US: Instrumental
+  llm_description: Instrumental
+  default: false
+- name: duration
+  label:
+    en_US: Target duration in seconds
+  type: number
+  required: false
+  form: form
+  human_description:
+    en_US: 10–360 seconds; a target rather than a guaranteed output length.
+  llm_description: 10–360 seconds; a target rather than a guaranteed output length.
+  default: 30
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    task_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    result:
+      type: object
+extra:
+  python:
+    source: tools/generate.py

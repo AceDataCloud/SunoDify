@@ -1,0 +1,63 @@
+{
+  "tested_at": "2026-10-07",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local, official remote-debug, console API workflows",
+  "signature_verification": true,
+  "browser_ui_tested": false,
+  "marketplace_install_tested": false,
+  "cases": [
+    {
+      "case": "suno-generate",
+      "operation": "generate",
+      "workflow_status": "succeeded",
+      "task_status": "pending",
+      "task_id": "95a81d9a-2b30-4b2e-ab9c-2b60474703f6",
+      "media_urls": []
+    },
+    {
+      "case": "suno-generate-result",
+      "operation": "task",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "task_id": "95a81d9a-2b30-4b2e-ab9c-2b60474703f6",
+      "media_urls": [
+        "https://cdn.acedata2.cloud/suno/3f79ee9e-e37b-46cf-804e-10833b608f8a.mp3",
+        "https://cdn.acedata2.cloud/suno/1f9f24b6-a533-4dc3-add5-7f4035dd85a4.mp3"
+      ]
+    },
+    {
+      "case": "suno-custom",
+      "operation": "generate",
+      "workflow_status": "succeeded",
+      "task_status": "pending",
+      "task_id": "8439b6f3-7738-410d-a77b-1a4c72387895",
+      "media_urls": []
+    },
+    {
+      "case": "suno-custom-result",
+      "operation": "task",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "task_id": "8439b6f3-7738-410d-a77b-1a4c72387895",
+      "media_urls": [
+        "https://cdn.acedata2.cloud/suno/829d6ace-7aa2-4b59-a19d-0f0767c0c979.mp3",
+        "https://cdn.acedata2.cloud/suno/77388421-e33d-407e-ad50-4e24f0ab2181.mp3"
+      ]
+    }
+  ],
+  "billing": [
+    {
+      "case": "suno-generate",
+      "task_id": "95a81d9a-2b30-4b2e-ab9c-2b60474703f6",
+      "matched_records": 1,
+      "http_status": 200,
+      "deducted_credits": 0.504
+    },
+    {
+      "case": "suno-custom",
+      "task_id": "8439b6f3-7738-410d-a77b-1a4c72387895",
+      "matched_records": 1,
+      "http_status": 200,
+      "deducted_credits": 0.504
+    }
+  ]
+}
