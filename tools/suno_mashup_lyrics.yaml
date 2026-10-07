@@ -1,0 +1,57 @@
+identity:
+  name: suno_mashup_lyrics
+  author: acedatacloud
+  label:
+    en_US: Suno Mashup Lyrics
+    zh_Hans: Suno 混合歌词
+description:
+  human:
+    en_US: Mashup Lyrics through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Mashup Lyrics。
+  llm: Mashup Lyrics through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: lyrics_a
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Lyrics A
+    zh_Hans: 第一组歌词
+  human_description:
+    en_US: Set lyrics a for this operation.
+    zh_Hans: 用于混合生成歌词的第一段歌词内容。
+  llm_description: Set lyrics a for this operation.
+- name: lyrics_b
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Lyrics B
+    zh_Hans: 第二组歌词
+  human_description:
+    en_US: Set lyrics b for this operation.
+    zh_Hans: 用于混合生成歌词的第二段歌词内容。
+  llm_description: Set lyrics b for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_mashup_lyrics.py

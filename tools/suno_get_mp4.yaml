@@ -1,0 +1,46 @@
+identity:
+  name: suno_get_mp4
+  author: acedatacloud
+  label:
+    en_US: Suno Get Mp4
+    zh_Hans: Suno 获取 MP4
+description:
+  human:
+    en_US: Get Mp4 through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Get Mp4。
+  llm: Get Mp4 through the Ace Data Cloud Suno API. For asynchronous results, preserve
+    task_id and use the task retrieval tool until completion. A successful submission
+    is not completed output.
+parameters:
+- name: audio_id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Audio Id
+    zh_Hans: 音频 ID
+  human_description:
+    en_US: Set audio id for this operation.
+    zh_Hans: 用于获取对应歌曲 MP4 的歌曲 ID。
+  llm_description: Set audio id for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_get_mp4.py

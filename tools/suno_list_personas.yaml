@@ -1,0 +1,68 @@
+identity:
+  name: suno_list_personas
+  author: acedatacloud
+  label:
+    en_US: Suno List Personas
+    zh_Hans: Suno 列出 Persona
+description:
+  human:
+    en_US: List Personas through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 List Personas。
+  llm: List Personas through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: user_id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: User Id
+    zh_Hans: 用户 ID
+  human_description:
+    en_US: Set user id for this operation.
+    zh_Hans: 设置用户 ID。
+  llm_description: Set user id for this operation.
+- name: limit
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Limit
+    zh_Hans: 返回数量
+  human_description:
+    en_US: Set limit for this operation.
+    zh_Hans: 设置返回数量。
+  llm_description: Set limit for this operation.
+- name: offset
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Offset
+    zh_Hans: 偏移量
+  human_description:
+    en_US: Set offset for this operation.
+    zh_Hans: 设置偏移量。
+  llm_description: Set offset for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_list_personas.py

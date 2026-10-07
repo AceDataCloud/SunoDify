@@ -8,34 +8,35 @@ description:
   human:
     en_US: Generate songs with Ace Data Cloud Suno Audios API.
     zh_Hans: 通过 Ace Data Cloud Suno Audios API 生成歌曲。
-  llm: Generate songs via Ace Data Cloud Suno Audios API. Returns a task_id and song
-    metadata (audio_url/image_url/lyric/etc). Returns a task ID; use the task retrieval
-    tool to obtain completed media. Never repeat a pending submission.
+  llm: Generate songs with Ace Data Cloud Suno Audios API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
 parameters:
-- name: prompt
-  label:
-    en_US: Prompt
-    zh_Hans: 提示词
+- name: lyric
   type: string
   required: false
   form: llm
-  human_description:
-    en_US: Music description
-    zh_Hans: 描述希望生成的歌曲；启用自定义模式后可留空。
-  llm_description: Music description
-- name: model
   label:
-    en_US: Model
-    zh_Hans: 模型
+    en_US: Lyric
+    zh_Hans: 歌词
+  human_description:
+    en_US: Lyrics for custom mode; omit for instrumental music.
+    zh_Hans: 自定义模式（`custom` 为 `true`）下用于生成音乐的歌词。`chirp-v3-5` 与 `chirp-v4` 最多 3000
+      字符；`chirp-v4-5` 及以上（含 `chirp-v5`、`chirp-v5-5`）最多 5000 字符。
+  llm_description: Lyrics for custom mode; omit for instrumental music.
+- name: model
   type: select
   required: false
   form: form
+  label:
+    en_US: Model
+    zh_Hans: 模型
   human_description:
-    en_US: Select the model. Available models, access and pricing are shown in the
-      Ace Data Cloud console.
-    zh_Hans: 选择要调用的模型。模型权限和价格以 Ace Data Cloud 控制台为准。
-  llm_description: Select the model. Available models, access and pricing are shown
-    in the Ace Data Cloud console.
+    en_US: Select a model currently supported by this API. Availability and pricing
+      depend on the chosen model.
+    zh_Hans: 用于生成音乐的模型。支持 `chirp-v6`、`chirp-v6-wild` 和 `chirp-v6-mini`；推荐使用 `chirp-v6`。旧模型名称继续兼容。
+  llm_description: Select a model currently supported by this API. Availability and
+    pricing depend on the chosen model.
   default: chirp-v6
   options:
   - value: chirp-v6
@@ -58,95 +59,709 @@ parameters:
     label:
       en_US: chirp-v5
       zh_Hans: chirp-v5
-- name: custom
-  label:
-    en_US: Custom Mode
-    zh_Hans: 自定义模式
+  - value: chirp-v4-5-plus
+    label:
+      en_US: chirp-v4-5-plus
+      zh_Hans: chirp-v4-5-plus
+  - value: chirp-v4-5
+    label:
+      en_US: chirp-v4-5
+      zh_Hans: chirp-v4-5
+  - value: chirp-v4
+    label:
+      en_US: chirp-v4
+      zh_Hans: chirp-v4
+  - value: chirp-v3-5
+    label:
+      en_US: chirp-v3-5
+      zh_Hans: chirp-v3-5
+  - value: chirp-v3-0
+    label:
+      en_US: chirp-v3-0
+      zh_Hans: chirp-v3-0
+- name: max_mode
   type: boolean
   required: false
   form: form
-  human_description:
-    en_US: Use style and custom lyrics when enabled; otherwise describe the song in
-      the prompt.
-    zh_Hans: 启用后使用风格和自定义歌词；关闭时使用提示词描述歌曲。
-  llm_description: Use style and custom lyrics when enabled; otherwise describe the
-    song in the prompt.
-  default: false
-- name: lyric
   label:
-    en_US: Lyric
-    zh_Hans: 歌词
-  type: string
-  required: false
-  form: llm
+    en_US: Max Mode
+    zh_Hans: Max 模式
   human_description:
-    en_US: Lyrics for custom mode; omit for instrumental music.
-    zh_Hans: 自定义模式下的歌词；纯音乐模式可留空。
-  llm_description: Lyrics for custom mode; omit for instrumental music.
-- name: title
+    en_US: Set max mode for this operation.
+    zh_Hans: 是否启用增强生成模式。仅支持 `generate`（同时要求 `custom` 为 `true`）和 `add_stem`。开启后分别消耗
+      1.12 和 1.344 Credits；关闭或省略时按普通模式计费。其他 action 传入该参数会返回 400。
+  llm_description: Set max mode for this operation.
+- name: variety
+  type: select
+  required: false
+  form: form
   label:
-    en_US: Title
-    zh_Hans: 标题
-  type: string
-  required: false
-  form: llm
+    en_US: Variety
+    zh_Hans: 多样性
   human_description:
-    en_US: Title of the generated song.
-    zh_Hans: 生成歌曲的标题。
-  llm_description: Title of the generated song.
+    en_US: Set variety for this operation.
+    zh_Hans: 生成结果的多样性强度，可选 `off`、`normal`、`high`、`extra`、`max`。仅支持 `generate` 和 `add_stem`；其他
+      action 传入会返回 400。
+  llm_description: Set variety for this operation.
+  options:
+  - value: 'off'
+    label:
+      en_US: 'off'
+      zh_Hans: 'off'
+  - value: normal
+    label:
+      en_US: normal
+      zh_Hans: normal
+  - value: high
+    label:
+      en_US: high
+      zh_Hans: high
+  - value: extra
+    label:
+      en_US: extra
+      zh_Hans: extra
+  - value: max
+    label:
+      en_US: max
+      zh_Hans: max
 - name: style
+  type: string
+  required: false
+  form: form
   label:
     en_US: Style
     zh_Hans: 风格
-  type: string
-  required: false
-  form: llm
   human_description:
     en_US: Describe the genre, tempo and instruments.
-    zh_Hans: 歌曲风格，例如曲风、节奏和乐器。
+    zh_Hans: 音乐风格描述。`chirp-v3-5` 与 `chirp-v4` 最多 200 字符；`chirp-v4-5` 及以上（含 `chirp-v5`、`chirp-v5-5`）最多
+      1000 字符。 当 `action` 为 `add_stem` 时可选。
   llm_description: Describe the genre, tempo and instruments.
-- name: instrumental
+- name: variation_category
+  type: select
+  required: false
+  form: form
   label:
-    en_US: Instrumental
-    zh_Hans: 纯音乐
+    en_US: Variation Category
+    zh_Hans: 变奏强度
+  human_description:
+    en_US: Set variation category for this operation.
+    zh_Hans: 重制变化幅度，仅用于 `remaster`，可选 `high`、`normal`、`subtle`。
+  llm_description: Set variation category for this operation.
+  options:
+  - value: high
+    label:
+      en_US: high
+      zh_Hans: high
+  - value: normal
+    label:
+      en_US: normal
+      zh_Hans: normal
+  - value: subtle
+    label:
+      en_US: subtle
+      zh_Hans: subtle
+- name: title
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Title
+    zh_Hans: 标题
+  human_description:
+    en_US: Title of the generated song.
+    zh_Hans: 音乐标题（自定义模式）。`chirp-v3-5`、`chirp-v4` 最多 80 字符；`chirp-v4-5` 及以上（含 `chirp-v5`、`chirp-v5-5`）最多
+      100 字符。 当 `action` 为 `add_stem` 时可选；当 `action` 为 `adjust_speed` 时必填。
+  llm_description: Title of the generated song.
+- name: action
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Action
+    zh_Hans: 操作
+  human_description:
+    en_US: Set action for this operation.
+    zh_Hans: 生成音乐的操作类型。`generate`：根据提示词生成音频；`extend`：在已有音频基础上续生成；`concat`：将已有音频片段拼接为完整曲目；`cover`：复制已有曲目的音乐风格并重新演绎；`upload_cover`：对已上传的音频进行风格翻唱；`upload_extend`：将已上传的音频延伸续生成；`artist_consistency`：以指定歌手风格（Persona）演唱新歌曲；`artist_consistency_vox`：以
+      VOX 模式使用指定歌手风格演唱新歌曲；`stems`：将歌曲分离为人声和伴奏两轨；`all_stems`：将歌曲分离为所有独立音轨（人声、鼓、贝斯、其他乐器）；`add_stem`：为已有音频添加新音轨，必填
+      `audio_id`、`stem_type`，可选 `prompt`、`title`、`style`；`extract_stem`：从已有音频中提取指定音轨，必填
+      `audio_id`、`stem_type`，可选 `audio_format`；`sounds`：生成独立音效，必填 `sound`、`sound_type`，可选
+      `bpm`、`key`；`adjust_speed`：调整已有音频的播放速度，必填 `audio_id`、`speed_multiplier`、`title`，`keep_pitch`
+      可选；`replace_section`：替换指定时间段内的片段；`underpainting`：为已上传的人声轨道生成并添加 AI 伴奏；`overpainting`：为已上传的伴奏轨道生成并添加
+      AI 人声；`samples`：从一段已有音频中选择起止区间进行采样创作；`remaster`：对已有音频进行重新母带处理以提升音质；`mashup`：将多首歌曲混合拼接为一首曲目；`inspo`：Inspo
+      灵感创作功能，使用 1 到 4 段拖拽或上传的参考音频启发全新音乐创作。
+  llm_description: Set action for this operation.
+  default: generate
+  options:
+  - value: generate
+    label:
+      en_US: generate
+      zh_Hans: generate
+  - value: extend
+    label:
+      en_US: extend
+      zh_Hans: extend
+  - value: upload_extend
+    label:
+      en_US: upload_extend
+      zh_Hans: upload_extend
+  - value: upload_cover
+    label:
+      en_US: upload_cover
+      zh_Hans: upload_cover
+  - value: concat
+    label:
+      en_US: concat
+      zh_Hans: concat
+  - value: cover
+    label:
+      en_US: cover
+      zh_Hans: cover
+  - value: artist_consistency
+    label:
+      en_US: artist_consistency
+      zh_Hans: artist_consistency
+  - value: artist_consistency_vox
+    label:
+      en_US: artist_consistency_vox
+      zh_Hans: artist_consistency_vox
+  - value: stems
+    label:
+      en_US: stems
+      zh_Hans: stems
+  - value: all_stems
+    label:
+      en_US: all_stems
+      zh_Hans: all_stems
+  - value: add_stem
+    label:
+      en_US: add_stem
+      zh_Hans: add_stem
+  - value: extract_stem
+    label:
+      en_US: extract_stem
+      zh_Hans: extract_stem
+  - value: sounds
+    label:
+      en_US: sounds
+      zh_Hans: sounds
+  - value: adjust_speed
+    label:
+      en_US: adjust_speed
+      zh_Hans: adjust_speed
+  - value: replace_section
+    label:
+      en_US: replace_section
+      zh_Hans: replace_section
+  - value: underpainting
+    label:
+      en_US: underpainting
+      zh_Hans: underpainting
+  - value: overpainting
+    label:
+      en_US: overpainting
+      zh_Hans: overpainting
+  - value: remaster
+    label:
+      en_US: remaster
+      zh_Hans: remaster
+  - value: mashup
+    label:
+      en_US: mashup
+      zh_Hans: mashup
+  - value: samples
+    label:
+      en_US: samples
+      zh_Hans: samples
+  - value: inspo
+    label:
+      en_US: inspo
+      zh_Hans: inspo
+- name: custom
   type: boolean
   required: false
   form: form
-  human_description:
-    en_US: Generate instrumental music without vocals.
-    zh_Hans: 仅生成伴奏，不包含人声。
-  llm_description: Generate instrumental music without vocals.
-  default: false
-- name: duration
   label:
-    en_US: Duration
-    zh_Hans: 时长
+    en_US: Custom Mode
+    zh_Hans: 自定义模式
+  human_description:
+    en_US: Use style and custom lyrics when enabled; otherwise describe the song in
+      the prompt.
+    zh_Hans: 是否启用自定义模式的标志。若为 `true`，音频将根据歌词生成；否则将根据提示词生成。
+  llm_description: Use style and custom lyrics when enabled; otherwise describe the
+    song in the prompt.
+  default: false
+- name: prompt
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Prompt
+    zh_Hans: 提示词
+  human_description:
+    en_US: Music description
+    zh_Hans: 灵感模式（`custom` 为 `false` 时生效）下用于生成音乐的提示词，长度不得超过 500 个字符。自定义模式请改用 `lyric`
+      与 `style`。 当 `action` 为 `add_stem` 时，此字段可选，用于描述要添加的音轨。
+  llm_description: Music description
+- name: lyric_prompt
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Lyric Prompt
+    zh_Hans: 歌词提示词
+  human_description:
+    en_US: Set lyric prompt for this operation.
+    zh_Hans: 用于自动生成歌词的提示词，仅在 `custom` 为 `true` 且 `lyric` 为空时生效
+  llm_description: Set lyric prompt for this operation.
+- name: audio_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Audio Id
+    zh_Hans: 音频 ID
+  human_description:
+    en_US: Set audio id for this operation.
+    zh_Hans: 已有音频的 ID。当 `action` 为 `extend`、`concat`、`add_stem`、`extract_stem` 或 `adjust_speed`
+      时，此字段必填。
+  llm_description: Set audio id for this operation.
+- name: stem_type
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Stem Type
+    zh_Hans: 音轨类型
+  human_description:
+    en_US: Set stem type for this operation.
+    zh_Hans: 音轨类型。当 `action` 为 `add_stem` 或 `extract_stem` 时必填；支持 `vocals`、`backing_vocals`、`drums`、`bass`、`guitar`、`keyboard`、`percussion`、`strings`、`synth`、`fx`、`brass`、`woodwinds`。
+  llm_description: Set stem type for this operation.
+  options:
+  - value: vocals
+    label:
+      en_US: vocals
+      zh_Hans: vocals
+  - value: backing_vocals
+    label:
+      en_US: backing_vocals
+      zh_Hans: backing_vocals
+  - value: drums
+    label:
+      en_US: drums
+      zh_Hans: drums
+  - value: bass
+    label:
+      en_US: bass
+      zh_Hans: bass
+  - value: guitar
+    label:
+      en_US: guitar
+      zh_Hans: guitar
+  - value: keyboard
+    label:
+      en_US: keyboard
+      zh_Hans: keyboard
+  - value: percussion
+    label:
+      en_US: percussion
+      zh_Hans: percussion
+  - value: strings
+    label:
+      en_US: strings
+      zh_Hans: strings
+  - value: synth
+    label:
+      en_US: synth
+      zh_Hans: synth
+  - value: fx
+    label:
+      en_US: fx
+      zh_Hans: fx
+  - value: brass
+    label:
+      en_US: brass
+      zh_Hans: brass
+  - value: woodwinds
+    label:
+      en_US: woodwinds
+      zh_Hans: woodwinds
+- name: audio_format
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Audio Format
+    zh_Hans: 音频格式
+  human_description:
+    en_US: Set audio format for this operation.
+    zh_Hans: 输出音频格式，仅在 `action` 为 `extract_stem` 或 `sounds` 时可选，当前支持 `mp3`。
+  llm_description: Set audio format for this operation.
+  options:
+  - value: mp3
+    label:
+      en_US: mp3
+      zh_Hans: mp3
+- name: sound
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Sound
+    zh_Hans: 声音描述
+  human_description:
+    en_US: Set sound for this operation.
+    zh_Hans: 要生成的音效描述，当 `action` 为 `sounds` 时必填。
+  llm_description: Set sound for this operation.
+- name: sound_type
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Sound Type
+    zh_Hans: 声音类型
+  human_description:
+    en_US: Set sound type for this operation.
+    zh_Hans: 音效类型，当 `action` 为 `sounds` 时必填。`one-shot` 表示单次音效，`loop` 表示可循环音效。
+  llm_description: Set sound type for this operation.
+  options:
+  - value: one-shot
+    label:
+      en_US: one-shot
+      zh_Hans: one-shot
+  - value: loop
+    label:
+      en_US: loop
+      zh_Hans: loop
+- name: bpm
   type: number
   required: false
   form: form
+  label:
+    en_US: Bpm
+    zh_Hans: 每分钟节拍
+  human_description:
+    en_US: Set bpm for this operation.
+    zh_Hans: 音效目标速度（每分钟节拍数），仅在 `action` 为 `sounds` 时可选，需为 1 到 300 的整数。
+  llm_description: Set bpm for this operation.
+  min: 1
+  max: 300
+- name: key
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Key
+    zh_Hans: 调性
+  human_description:
+    en_US: Set key for this operation.
+    zh_Hans: 音效的目标调性，仅在 `action` 为 `sounds` 时可选。
+  llm_description: Set key for this operation.
+- name: speed_multiplier
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Speed Multiplier
+    zh_Hans: 速度倍率
+  human_description:
+    en_US: Set speed multiplier for this operation.
+    zh_Hans: 播放速度倍数，当 `action` 为 `adjust_speed` 时必填，范围为 0.25 到 4。
+  llm_description: Set speed multiplier for this operation.
+  min: 0.25
+  max: 4
+- name: keep_pitch
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Keep Pitch
+    zh_Hans: 保持音高
+  human_description:
+    en_US: Set keep pitch for this operation.
+    zh_Hans: 调整速度时是否保持原音高，默认为 `false`，仅用于 `adjust_speed`。
+  llm_description: Set keep pitch for this operation.
+- name: mashup_audio_ids
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Mashup Audio Ids
+    zh_Hans: 混音音频 ID 列表
+  human_description:
+    en_US: Set mashup audio ids for this operation. Enter a JSON array or object where
+      applicable.
+    zh_Hans: 用于混音混搭的音频 ID 列表。当 `action` 为 `mashup` 时，此字段必填。 数组或对象请使用 JSON 格式。
+  llm_description: Set mashup audio ids for this operation. Enter a JSON array or
+    object where applicable.
+- name: audio_urls
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Audio Urls
+    zh_Hans: 参考音频链接
+  human_description:
+    en_US: Set audio urls for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 用于 Inspo 灵感创作功能的参考音频 URL 列表，需提供 1 到 4 个公开可访问的 HTTP(S) 音频地址。当 `action`
+      为 `inspo` 时，此字段必填。 数组或对象请使用 JSON 格式。
+  llm_description: Set audio urls for this operation. Enter a JSON array or object
+    where applicable.
+- name: weirdness
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Weirdness
+    zh_Hans: 创意程度
+  human_description:
+    en_US: Set weirdness for this operation.
+    zh_Hans: 怪异度，范围 0 到 1。值越高，结果通常越具实验性；0 会作为有效值传递。具体效果取决于操作类型、模式和模型。
+  llm_description: Set weirdness for this operation.
+  min: 0
+  max: 1
+- name: persona_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Persona Id
+    zh_Hans: Persona ID
+  human_description:
+    en_US: Set persona id for this operation.
+    zh_Hans: 根据指定歌手的独特风格特征生成歌曲时使用的歌手 Persona ID。
+  llm_description: Set persona id for this operation.
+- name: overpainting_start
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Overpainting Start
+    zh_Hans: 重绘开始时间
+  human_description:
+    en_US: Set overpainting start for this operation.
+    zh_Hans: 为已上传音频添加 AI 人声的默认起始时间，默认值为 0。
+  llm_description: Set overpainting start for this operation.
+- name: overpainting_end
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Overpainting End
+    zh_Hans: 重绘结束时间
+  human_description:
+    en_US: Set overpainting end for this operation.
+    zh_Hans: 为已上传音频添加 AI 人声的结束时间，必须小于歌曲的总时长。
+  llm_description: Set overpainting end for this operation.
+- name: samples_start
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Samples Start
+    zh_Hans: 采样开始时间
+  human_description:
+    en_US: Set samples start for this operation.
+    zh_Hans: 为已上传音频添加采样的默认起始时间，默认值为 0。
+  llm_description: Set samples start for this operation.
+- name: samples_end
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Samples End
+    zh_Hans: 采样结束时间
+  human_description:
+    en_US: Set samples end for this operation.
+    zh_Hans: 为已上传音频添加采样的结束时间，必须小于歌曲的总时长。
+  llm_description: Set samples end for this operation.
+- name: underpainting_start
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Underpainting Start
+    zh_Hans: 补写开始时间
+  human_description:
+    en_US: Set underpainting start for this operation.
+    zh_Hans: 为已上传音频添加 AI 伴奏的默认起始时间，默认值为 0。
+  llm_description: Set underpainting start for this operation.
+- name: underpainting_end
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Underpainting End
+    zh_Hans: 补写结束时间
+  human_description:
+    en_US: Set underpainting end for this operation.
+    zh_Hans: 为已上传音频添加 AI 伴奏的结束时间，必须小于歌曲的总时长。
+  llm_description: Set underpainting end for this operation.
+- name: continue_at
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Continue At
+    zh_Hans: 续写开始时间
+  human_description:
+    en_US: Set continue at for this operation.
+    zh_Hans: 续写边界，单位为秒。例如，213.5 表示从第 3 分钟 33.5 秒处开始生成后续片段。`lyric` 和 `style` 只引导该边界之后的新内容，不会替换源音频中边界之前的歌词或演唱；若要让整首歌曲使用新歌词，请使用
+      `generate` 重新生成，或使用 `cover` 重新演绎。
+  llm_description: Set continue at for this operation.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 音频生成完成后将被调用的回调 URL
+  llm_description: Set callback url for this operation.
+- name: instrumental
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Instrumental
+    zh_Hans: 纯音乐
+  human_description:
+    en_US: Generate instrumental music without vocals.
+    zh_Hans: 纯伴奏模式（无歌词），默认为 `false`。设为 `true` 时，上方填写的歌词将被忽略。
+  llm_description: Generate instrumental music without vocals.
+  default: false
+- name: vocal_gender
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Vocal Gender
+    zh_Hans: 人声性别
+  human_description:
+    en_US: Set vocal gender for this operation.
+    zh_Hans: 人声性别偏好，可选 `m`（男声）或 `f`（女声）。这是生成倾向，不保证严格遵循。
+  llm_description: Set vocal gender for this operation.
+  options:
+  - value: f
+    label:
+      en_US: f
+      zh_Hans: f
+  - value: m
+    label:
+      en_US: m
+      zh_Hans: m
+- name: negative_tags
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Negative Tags
+    zh_Hans: 排除风格
+  human_description:
+    en_US: Set negative tags for this operation.
+    zh_Hans: 不希望在生成音乐中出现的风格或流派描述，仅在自定义模式（`custom` 为 `true`）下生效
+  llm_description: Set negative tags for this operation.
+- name: style_influence
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Style Influence
+    zh_Hans: 风格影响
+  human_description:
+    en_US: Set style influence for this operation.
+    zh_Hans: 风格影响力，范围 0 到 1。值越高，结果通常越贴近 `style`；0 会作为有效值传递。具体效果取决于操作类型、模式和模型。
+  llm_description: Set style influence for this operation.
+  min: 0
+  max: 1
+- name: audio_weight
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Audio Weight
+    zh_Hans: 音频权重
+  human_description:
+    en_US: Set audio weight for this operation.
+    zh_Hans: 音频或声音特征的影响权重，范围 0 到 1，0 也是有效值。可用于生成、续写、翻唱、添加音轨和声音一致性等操作；没有参考音频或声音特征的场景中，模型可能弱化或忽略该值。
+  llm_description: Set audio weight for this operation.
+  min: 0
+  max: 1
+- name: duration
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Duration
+    zh_Hans: 时长
   human_description:
     en_US: 10–360 seconds; a target rather than a guaranteed output length.
-    zh_Hans: 目标时长为 10–360 秒，实际音频长度可能不同。
+    zh_Hans: 期望歌曲时长（秒），必须是 10 到 360 的整数。平台会传递该值，具体操作、模式或模型可能弱化或忽略它。这是生成目标而非硬性成品长度，实际时长以响应为准。
   llm_description: 10–360 seconds; a target rather than a guaranteed output length.
-  default: 30
+  min: 10
+  max: 360
+- name: replace_section_end
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Replace Section End
+    zh_Hans: 替换片段结束
+  human_description:
+    en_US: Set replace section end for this operation.
+    zh_Hans: 当 `action` 为 `replace_section` 时，指定待替换片段的结束时间（秒）。
+  llm_description: Set replace section end for this operation.
+- name: replace_section_result_mode
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Replace Section Result Mode
+    zh_Hans: 替换片段输出方式
+  human_description:
+    en_US: Set replace section result mode for this operation.
+    zh_Hans: 当 `action` 为 `replace_section` 时，指定返回形态。`full_song`（默认）会分别拼接 2 个候选并返回
+      2 首完整歌曲；`candidates` 返回 2 个尚未拼接的替换片段候选，需要选取候选后再调用 `concat`。
+  llm_description: Set replace section result mode for this operation.
+  options:
+  - value: candidates
+    label:
+      en_US: candidates
+      zh_Hans: candidates
+  - value: full_song
+    label:
+      en_US: full_song
+      zh_Hans: full_song
+- name: replace_section_start
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Replace Section Start
+    zh_Hans: 替换片段开始
+  human_description:
+    en_US: Set replace section start for this operation.
+    zh_Hans: 当 `action` 为 `replace_section` 时，指定待替换片段的起始时间（秒）。
+  llm_description: Set replace section start for this operation.
 output_schema:
   type: object
   properties:
     status:
       type: string
+    success:
+      type: boolean
     task_id:
+      type: string
+    trace_id:
       type: string
     media_urls:
       type: array
       items:
         type: string
+    data: {}
     result:
       type: object
-    success:
-      type: boolean
-    trace_id:
-      type: string
-    data: {}
 extra:
   python:
     source: tools/suno_generate_audios.py

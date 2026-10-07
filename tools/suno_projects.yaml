@@ -1,0 +1,430 @@
+identity:
+  name: suno_projects
+  author: acedatacloud
+  label:
+    en_US: Suno Projects
+    zh_Hans: Suno 音乐项目
+description:
+  human:
+    en_US: Projects through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Projects。
+  llm: Projects through the Ace Data Cloud Suno API. For asynchronous results, preserve
+    task_id and use the task retrieval tool until completion. A successful submission
+    is not completed output.
+parameters:
+- name: action
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Action
+    zh_Hans: 操作
+  human_description:
+    en_US: Set action for this operation.
+    zh_Hans: 设置操作。
+  llm_description: Set action for this operation.
+  default: retrieve
+  options:
+  - value: create
+    label:
+      en_US: create
+      zh_Hans: create
+  - value: retrieve
+    label:
+      en_US: retrieve
+      zh_Hans: retrieve
+  - value: save
+    label:
+      en_US: save
+      zh_Hans: save
+  - value: upload
+    label:
+      en_US: upload
+      zh_Hans: upload
+  - value: add_track
+    label:
+      en_US: add_track
+      zh_Hans: add_track
+  - value: generate_track
+    label:
+      en_US: generate_track
+      zh_Hans: generate_track
+  - value: replace_section
+    label:
+      en_US: replace_section
+      zh_Hans: replace_section
+  - value: commit_candidate
+    label:
+      en_US: commit_candidate
+      zh_Hans: commit_candidate
+  - value: remove_track
+    label:
+      en_US: remove_track
+      zh_Hans: remove_track
+  - value: render
+    label:
+      en_US: render
+      zh_Hans: render
+- name: title
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Title
+    zh_Hans: 标题
+  human_description:
+    en_US: Set title for this operation.
+    zh_Hans: 设置标题。
+  llm_description: Set title for this operation.
+- name: id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Id
+    zh_Hans: ID
+  human_description:
+    en_US: Set id for this operation.
+    zh_Hans: 设置ID。
+  llm_description: Set id for this operation.
+- name: version_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Version Id
+    zh_Hans: 版本 ID
+  human_description:
+    en_US: Set version id for this operation.
+    zh_Hans: 新创建的空工程尚无 version_id；仅首次保存可省略。工程生成版本后，后续保存必须提交最新 version_id。
+  llm_description: Set version id for this operation.
+- name: state
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: State
+    zh_Hans: 项目状态
+  human_description:
+    en_US: Set state for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 工程 timing.bps 为每秒拍数，默认为 2，必须为正数。片段位置使用工程拍单位。 数组或对象请使用 JSON 格式。
+  llm_description: Set state for this operation. Enter a JSON array or object where
+    applicable.
+- name: audio_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Audio Url
+    zh_Hans: 音频链接
+  human_description:
+    en_US: Set audio url for this operation.
+    zh_Hans: 设置音频链接。
+  llm_description: Set audio url for this operation.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 设置回调 URL。
+  llm_description: Set callback url for this operation.
+- name: audio_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Audio Id
+    zh_Hans: 音频 ID
+  human_description:
+    en_US: Set audio id for this operation.
+    zh_Hans: 设置音频 ID。
+  llm_description: Set audio id for this operation.
+- name: name
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Name
+    zh_Hans: 名称
+  human_description:
+    en_US: Set name for this operation.
+    zh_Hans: 设置名称。
+  llm_description: Set name for this operation.
+- name: start_beats
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Start Beats
+    zh_Hans: 开始节拍
+  human_description:
+    en_US: Set start beats for this operation.
+    zh_Hans: 设置开始节拍。
+  llm_description: Set start beats for this operation.
+  min: 0
+- name: end_beats
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: End Beats
+    zh_Hans: 结束节拍
+  human_description:
+    en_US: Set end beats for this operation.
+    zh_Hans: 设置结束节拍。
+  llm_description: Set end beats for this operation.
+  min: 0
+- name: gain
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Gain
+    zh_Hans: 增益
+  human_description:
+    en_US: Set gain for this operation.
+    zh_Hans: 设置增益。
+  llm_description: Set gain for this operation.
+- name: source_audio_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Source Audio Id
+    zh_Hans: 来源音频 ID
+  human_description:
+    en_US: Set source audio id for this operation.
+    zh_Hans: 设置来源音频 ID。
+  llm_description: Set source audio id for this operation.
+- name: model
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  human_description:
+    en_US: Select a model currently supported by this API. Availability and pricing
+      depend on the chosen model.
+    zh_Hans: 设置模型。
+  llm_description: Select a model currently supported by this API. Availability and
+    pricing depend on the chosen model.
+  options:
+  - value: chirp-v3-5
+    label:
+      en_US: chirp-v3-5
+      zh_Hans: chirp-v3-5
+  - value: chirp-v4
+    label:
+      en_US: chirp-v4
+      zh_Hans: chirp-v4
+  - value: chirp-v4-5
+    label:
+      en_US: chirp-v4-5
+      zh_Hans: chirp-v4-5
+  - value: chirp-v4-5-plus
+    label:
+      en_US: chirp-v4-5-plus
+      zh_Hans: chirp-v4-5-plus
+  - value: chirp-v5
+    label:
+      en_US: chirp-v5
+      zh_Hans: chirp-v5
+  - value: chirp-v5-5
+    label:
+      en_US: chirp-v5-5
+      zh_Hans: chirp-v5-5
+  - value: chirp-v6
+    label:
+      en_US: chirp-v6
+      zh_Hans: chirp-v6
+  - value: chirp-v6-wild
+    label:
+      en_US: chirp-v6-wild
+      zh_Hans: chirp-v6-wild
+  - value: chirp-v6-mini
+    label:
+      en_US: chirp-v6-mini
+      zh_Hans: chirp-v6-mini
+- name: tags
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Tags
+    zh_Hans: 标签
+  human_description:
+    en_US: Set tags for this operation.
+    zh_Hans: 设置标签。
+  llm_description: Set tags for this operation.
+- name: prompt
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Prompt
+    zh_Hans: 提示词
+  human_description:
+    en_US: Set prompt for this operation.
+    zh_Hans: 设置提示词。
+  llm_description: Set prompt for this operation.
+- name: start_seconds
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Start Seconds
+    zh_Hans: 开始秒数
+  human_description:
+    en_US: Set start seconds for this operation.
+    zh_Hans: 设置开始秒数。
+  llm_description: Set start seconds for this operation.
+  min: 0
+- name: end_seconds
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: End Seconds
+    zh_Hans: 结束秒数
+  human_description:
+    en_US: Set end seconds for this operation.
+    zh_Hans: 设置结束秒数。
+  llm_description: Set end seconds for this operation.
+- name: render_audio_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Render Audio Id
+    zh_Hans: 渲染音频 ID
+  human_description:
+    en_US: Set render audio id for this operation.
+    zh_Hans: 设置渲染音频 ID。
+  llm_description: Set render audio id for this operation.
+- name: stem_control_tags
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Stem Control Tags
+    zh_Hans: 音轨控制标签
+  human_description:
+    en_US: Set stem control tags for this operation.
+    zh_Hans: 设置音轨控制标签。
+  llm_description: Set stem control tags for this operation.
+- name: batch_size
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Batch Size
+    zh_Hans: 批量数量
+  human_description:
+    en_US: Set batch size for this operation.
+    zh_Hans: 设置批量数量。
+  llm_description: Set batch size for this operation.
+  min: 1
+  max: 4
+- name: replacement_lyrics
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Replacement Lyrics
+    zh_Hans: 替换歌词
+  human_description:
+    en_US: Set replacement lyrics for this operation.
+    zh_Hans: 设置替换歌词。
+  llm_description: Set replacement lyrics for this operation.
+- name: fixed
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Fixed
+    zh_Hans: 固定模式
+  human_description:
+    en_US: Set fixed for this operation.
+    zh_Hans: 设置固定模式。
+  llm_description: Set fixed for this operation.
+- name: operation_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Operation Id
+    zh_Hans: 操作 ID
+  human_description:
+    en_US: Set operation id for this operation.
+    zh_Hans: 设置操作 ID。
+  llm_description: Set operation id for this operation.
+- name: candidate_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Candidate Id
+    zh_Hans: 候选 ID
+  human_description:
+    en_US: Set candidate id for this operation.
+    zh_Hans: 设置候选 ID。
+  llm_description: Set candidate id for this operation.
+- name: track_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Track Id
+    zh_Hans: 音轨 ID
+  human_description:
+    en_US: Set track id for this operation.
+    zh_Hans: 替换候选提交到原轨道并保留源片段位置；新轨候选提交到提前创建的空轨道或无重叠位置。
+  llm_description: Set track id for this operation.
+- name: lyrics
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Lyrics
+    zh_Hans: 歌词
+  human_description:
+    en_US: Set lyrics for this operation.
+    zh_Hans: 设置歌词。
+  llm_description: Set lyrics for this operation.
+- name: idempotency_key
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Idempotency Key
+    zh_Hans: 幂等键
+  human_description:
+    en_US: Set idempotency key for this operation.
+    zh_Hans: 设置幂等键。
+  llm_description: Set idempotency key for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_projects.py

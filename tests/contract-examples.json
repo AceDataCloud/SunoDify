@@ -1,0 +1,305 @@
+[
+  {
+    "name": "suno_generate_audios-1",
+    "tool": "suno_generate_audios",
+    "inputs": {
+      "prompt": "Test"
+    },
+    "method": "POST",
+    "path": "/suno/audios",
+    "body": {
+      "model": "chirp-v6",
+      "action": "generate"
+    }
+  },
+  {
+    "name": "suno_generate_audios-2",
+    "tool": "suno_generate_audios",
+    "inputs": {
+      "action": "adjust_speed",
+      "audio_id": "owned-audio",
+      "speed_multiplier": 1.1,
+      "keep_pitch": true
+    },
+    "method": "POST",
+    "path": "/suno/audios",
+    "body": {
+      "action": "adjust_speed",
+      "speed_multiplier": 1.1
+    }
+  },
+  {
+    "name": "suno_generate_lyrics-3",
+    "tool": "suno_generate_lyrics",
+    "inputs": {
+      "prompt": "Test"
+    },
+    "method": "POST",
+    "path": "/suno/lyrics",
+    "body": {
+      "prompt": "Test",
+      "model": "default"
+    }
+  },
+  {
+    "name": "suno_upload_reference_audio-4",
+    "tool": "suno_upload_reference_audio",
+    "inputs": {
+      "audio_url": "https://example.org/reference.mp3"
+    },
+    "method": "POST",
+    "path": "/suno/upload",
+    "body": {
+      "audio_url": "https://example.org/reference.mp3"
+    }
+  },
+  {
+    "name": "suno_enhance_style-5",
+    "tool": "suno_enhance_style",
+    "inputs": {
+      "prompt": "Test"
+    },
+    "method": "POST",
+    "path": "/suno/style",
+    "body": {
+      "prompt": "Test"
+    }
+  },
+  {
+    "name": "suno_mashup_lyrics-6",
+    "tool": "suno_mashup_lyrics",
+    "inputs": {
+      "lyrics_a": "One",
+      "lyrics_b": "Two"
+    },
+    "method": "POST",
+    "path": "/suno/mashup-lyrics",
+    "body": {
+      "lyrics_a": "One"
+    }
+  },
+  {
+    "name": "suno_create_voice-7",
+    "tool": "suno_create_voice",
+    "inputs": {
+      "audio_url": "https://example.org/reference.mp3",
+      "name": "Owned voice"
+    },
+    "method": "POST",
+    "path": "/suno/voices",
+    "body": {
+      "audio_url": "https://example.org/reference.mp3"
+    }
+  },
+  {
+    "name": "suno_create_persona-8",
+    "tool": "suno_create_persona",
+    "inputs": {
+      "audio_id": "owned-audio",
+      "name": "Owned persona"
+    },
+    "method": "POST",
+    "path": "/suno/persona",
+    "body": {
+      "audio_id": "owned-audio"
+    }
+  },
+  {
+    "name": "suno_create_vox_audio-9",
+    "tool": "suno_create_vox_audio",
+    "inputs": {
+      "audio_id": "owned-audio",
+      "vocal_start": 0,
+      "vocal_end": 3
+    },
+    "method": "POST",
+    "path": "/suno/vox",
+    "body": {
+      "vocal_end": 3
+    }
+  },
+  {
+    "name": "suno_get_mp4-10",
+    "tool": "suno_get_mp4",
+    "inputs": {
+      "audio_id": "owned-audio"
+    },
+    "method": "POST",
+    "path": "/suno/mp4",
+    "body": {
+      "audio_id": "owned-audio"
+    }
+  },
+  {
+    "name": "suno_get_mp3-11",
+    "tool": "suno_get_mp3",
+    "inputs": {
+      "audio_id": "owned-audio"
+    },
+    "method": "POST",
+    "path": "/suno/mp3",
+    "body": {
+      "audio_id": "owned-audio"
+    }
+  },
+  {
+    "name": "suno_get_wav-12",
+    "tool": "suno_get_wav",
+    "inputs": {
+      "audio_id": "owned-audio"
+    },
+    "method": "POST",
+    "path": "/suno/wav",
+    "body": {
+      "audio_id": "owned-audio"
+    }
+  },
+  {
+    "name": "suno_get_midi-13",
+    "tool": "suno_get_midi",
+    "inputs": {
+      "audio_id": "owned-audio"
+    },
+    "method": "POST",
+    "path": "/suno/midi",
+    "body": {
+      "audio_id": "owned-audio"
+    }
+  },
+  {
+    "name": "suno_get_timing-14",
+    "tool": "suno_get_timing",
+    "inputs": {
+      "audio_id": "owned-audio"
+    },
+    "method": "POST",
+    "path": "/suno/timing",
+    "body": {
+      "audio_id": "owned-audio"
+    }
+  },
+  {
+    "name": "suno_list_personas-15",
+    "tool": "suno_list_personas",
+    "inputs": {
+      "user_id": "owned-user"
+    },
+    "method": "GET",
+    "path": "/suno/persona",
+    "body": {},
+    "query": {
+      "user_id": "owned-user"
+    },
+    "read_only": true
+  },
+  {
+    "name": "suno_delete_persona-16",
+    "tool": "suno_delete_persona",
+    "inputs": {
+      "persona_id": "owned-persona",
+      "confirm": true
+    },
+    "method": "DELETE",
+    "path": "/suno/persona",
+    "body": {},
+    "query": {
+      "persona_id": "owned-persona"
+    }
+  },
+  {
+    "name": "suno_delete_persona-17",
+    "tool": "suno_delete_persona",
+    "inputs": {
+      "persona_id": "owned-persona"
+    },
+    "method": "DELETE",
+    "path": "/suno/persona",
+    "body": {},
+    "error": true
+  },
+  {
+    "name": "suno_custom_models-18",
+    "tool": "suno_custom_models",
+    "inputs": {
+      "action": "retrieve_batch",
+      "limit": 2
+    },
+    "method": "POST",
+    "path": "/suno/custom-models",
+    "body": {
+      "action": "retrieve_batch",
+      "limit": 2
+    },
+    "read_only": true
+  },
+  {
+    "name": "suno_custom_models-19",
+    "tool": "suno_custom_models",
+    "inputs": {
+      "action": "create",
+      "name": "Owned music",
+      "audio_urls": "[\"https://example.org/authorized-0.mp3\", \"https://example.org/authorized-1.mp3\", \"https://example.org/authorized-2.mp3\", \"https://example.org/authorized-3.mp3\", \"https://example.org/authorized-4.mp3\", \"https://example.org/authorized-5.mp3\"]"
+    },
+    "method": "POST",
+    "path": "/suno/custom-models",
+    "body": {
+      "name": "Owned music",
+      "audio_urls": [
+        "https://example.org/authorized-0.mp3",
+        "https://example.org/authorized-1.mp3",
+        "https://example.org/authorized-2.mp3",
+        "https://example.org/authorized-3.mp3",
+        "https://example.org/authorized-4.mp3",
+        "https://example.org/authorized-5.mp3"
+      ]
+    }
+  },
+  {
+    "name": "suno_projects-20",
+    "tool": "suno_projects",
+    "inputs": {
+      "action": "retrieve",
+      "id": "owned-project"
+    },
+    "method": "POST",
+    "path": "/suno/projects",
+    "body": {
+      "action": "retrieve",
+      "id": "owned-project"
+    },
+    "read_only": true
+  },
+  {
+    "name": "suno_projects-21",
+    "tool": "suno_projects",
+    "inputs": {
+      "action": "create",
+      "title": "Owned project",
+      "idempotency_key": "owned-idempotency"
+    },
+    "method": "POST",
+    "path": "/suno/projects",
+    "body": {
+      "title": "Owned project"
+    },
+    "headers": {
+      "Idempotency-Key": "owned-idempotency"
+    }
+  },
+  {
+    "name": "suno_tasks_retrieve_batch-22",
+    "tool": "suno_tasks_retrieve_batch",
+    "inputs": {
+      "ids": "[\"owned-task\"]"
+    },
+    "method": "POST",
+    "path": "/suno/tasks",
+    "body": {
+      "action": "retrieve_batch",
+      "ids": [
+        "owned-task"
+      ]
+    },
+    "read_only": true
+  }
+]

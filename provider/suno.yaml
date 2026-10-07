@@ -31,7 +31,24 @@ credentials_for_provider:
     url: https://platform.acedata.cloud/console/credentials
 tools:
 - tools/suno_generate_audios.yaml
+- tools/suno_generate_lyrics.yaml
+- tools/suno_upload_reference_audio.yaml
+- tools/suno_get_mp4.yaml
+- tools/suno_get_mp3.yaml
+- tools/suno_get_wav.yaml
+- tools/suno_get_midi.yaml
+- tools/suno_get_timing.yaml
+- tools/suno_create_vox_audio.yaml
+- tools/suno_enhance_style.yaml
+- tools/suno_mashup_lyrics.yaml
+- tools/suno_create_voice.yaml
+- tools/suno_create_persona.yaml
+- tools/suno_list_personas.yaml
+- tools/suno_delete_persona.yaml
+- tools/suno_custom_models.yaml
+- tools/suno_projects.yaml
 - tools/suno_task_retrieve.yaml
+- tools/suno_tasks_retrieve_batch.yaml
 extra:
   python:
     source: provider/suno.py

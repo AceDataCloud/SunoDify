@@ -1,0 +1,46 @@
+identity:
+  name: suno_enhance_style
+  author: acedatacloud
+  label:
+    en_US: Suno Enhance Style
+    zh_Hans: Suno 优化风格
+description:
+  human:
+    en_US: Enhance Style through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Enhance Style。
+  llm: Enhance Style through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: prompt
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Prompt
+    zh_Hans: 提示词
+  human_description:
+    en_US: Set prompt for this operation.
+    zh_Hans: 需要进行优化的风格提示词。
+  llm_description: Set prompt for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_enhance_style.py

@@ -1,0 +1,68 @@
+identity:
+  name: suno_create_voice
+  author: acedatacloud
+  label:
+    en_US: Suno Create Voice
+    zh_Hans: Suno 创建音色
+description:
+  human:
+    en_US: Create Voice through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Create Voice。
+  llm: Create Voice through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: audio_url
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Audio Url
+    zh_Hans: 音频链接
+  human_description:
+    en_US: Set audio url for this operation.
+    zh_Hans: 用于创建声音的音频文件的公开可访问 URL。必须为 MP3 或 WAV 格式，时长需在 10 至 240 秒之间（推荐 30 至 60 秒），且须包含单一说话人的清晰人声，不得含有背景噪音或背景音乐。带伴奏的完整歌曲通常无法通过声纹校验。
+  llm_description: Set audio url for this operation.
+- name: name
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Name
+    zh_Hans: 名称
+  human_description:
+    en_US: Set name for this operation.
+    zh_Hans: 自定义声音人格的名称。
+  llm_description: Set name for this operation.
+- name: description
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Description
+    zh_Hans: 描述
+  human_description:
+    en_US: Set description for this operation.
+    zh_Hans: 自定义声音人格的描述信息。
+  llm_description: Set description for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_create_voice.py

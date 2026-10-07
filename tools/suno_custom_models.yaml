@@ -1,0 +1,319 @@
+identity:
+  name: suno_custom_models
+  author: acedatacloud
+  label:
+    en_US: Suno Custom Models
+    zh_Hans: Suno 自定义音乐模型
+description:
+  human:
+    en_US: Custom Models through the Ace Data Cloud Suno API.
+    zh_Hans: 通过 Ace Data Cloud Suno API 执行 Custom Models。
+  llm: Custom Models through the Ace Data Cloud Suno API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: action
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Action
+    zh_Hans: 操作
+  human_description:
+    en_US: Set action for this operation.
+    zh_Hans: 创建成功消耗 10 Credits；创建失败不扣费。
+  llm_description: Set action for this operation.
+  default: retrieve_batch
+  options:
+  - value: create
+    label:
+      en_US: create
+      zh_Hans: create
+  - value: generate
+    label:
+      en_US: generate
+      zh_Hans: generate
+  - value: retrieve
+    label:
+      en_US: retrieve
+      zh_Hans: retrieve
+  - value: retrieve_batch
+    label:
+      en_US: retrieve_batch
+      zh_Hans: retrieve_batch
+  - value: delete
+    label:
+      en_US: delete
+      zh_Hans: delete
+- name: name
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Name
+    zh_Hans: 名称
+  human_description:
+    en_US: Set name for this operation.
+    zh_Hans: 模型名称，最长 100 个字符。
+  llm_description: Set name for this operation.
+- name: audio_urls
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Audio Urls
+    zh_Hans: 参考音频链接
+  human_description:
+    en_US: Set audio urls for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 6 至 24 个互不重复、可公开访问的 HTTPS 音频 URL。音频必须已取得模型创建与生成授权。 数组或对象请使用 JSON 格式。
+  llm_description: Set audio urls for this operation. Enter a JSON array or object
+    where applicable.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 可选 HTTPS 回调地址；模型就绪或创建失败后推送最终结果。
+  llm_description: Set callback url for this operation.
+- name: id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Id
+    zh_Hans: ID
+  human_description:
+    en_US: Set id for this operation.
+    zh_Hans: 专属音乐模型的平台 ID。
+  llm_description: Set id for this operation.
+- name: lyric
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Lyric
+    zh_Hans: 歌词
+  human_description:
+    en_US: Set lyric for this operation.
+    zh_Hans: 自定义歌词。非纯音乐生成时需提供 `lyric` 或 `lyric_prompt`。
+  llm_description: Set lyric for this operation.
+- name: lyric_prompt
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Lyric Prompt
+    zh_Hans: 歌词提示词
+  human_description:
+    en_US: Set lyric prompt for this operation.
+    zh_Hans: 歌词创作提示词。非纯音乐生成时可与 `lyric` 二选一。
+  llm_description: Set lyric prompt for this operation.
+- name: style
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Style
+    zh_Hans: 风格
+  human_description:
+    en_US: Set style for this operation.
+    zh_Hans: 期望的音乐风格。
+  llm_description: Set style for this operation.
+- name: negative_tags
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Negative Tags
+    zh_Hans: 排除风格
+  human_description:
+    en_US: Set negative tags for this operation.
+    zh_Hans: 希望避免的音乐风格。
+  llm_description: Set negative tags for this operation.
+- name: title
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Title
+    zh_Hans: 标题
+  human_description:
+    en_US: Set title for this operation.
+    zh_Hans: 歌曲标题。
+  llm_description: Set title for this operation.
+- name: instrumental
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Instrumental
+    zh_Hans: 纯音乐
+  human_description:
+    en_US: Set instrumental for this operation.
+    zh_Hans: 是否生成纯音乐。
+  llm_description: Set instrumental for this operation.
+- name: vocal_gender
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Vocal Gender
+    zh_Hans: 人声性别
+  human_description:
+    en_US: Set vocal gender for this operation.
+    zh_Hans: 设置人声性别。
+  llm_description: Set vocal gender for this operation.
+  options:
+  - value: f
+    label:
+      en_US: f
+      zh_Hans: f
+  - value: m
+    label:
+      en_US: m
+      zh_Hans: m
+- name: weirdness
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Weirdness
+    zh_Hans: 创意程度
+  human_description:
+    en_US: Set weirdness for this operation.
+    zh_Hans: 设置创意程度。
+  llm_description: Set weirdness for this operation.
+  min: 0
+  max: 1
+- name: style_influence
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Style Influence
+    zh_Hans: 风格影响
+  human_description:
+    en_US: Set style influence for this operation.
+    zh_Hans: 设置风格影响。
+  llm_description: Set style influence for this operation.
+  min: 0
+  max: 1
+- name: duration
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Duration
+    zh_Hans: 时长（秒）
+  human_description:
+    en_US: Set duration for this operation.
+    zh_Hans: 设置时长（秒）。
+  llm_description: Set duration for this operation.
+- name: limit
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Limit
+    zh_Hans: 返回数量
+  human_description:
+    en_US: Set limit for this operation.
+    zh_Hans: 设置返回数量。
+  llm_description: Set limit for this operation.
+  min: 1
+  max: 100
+- name: offset
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Offset
+    zh_Hans: 偏移量
+  human_description:
+    en_US: Set offset for this operation.
+    zh_Hans: 设置偏移量。
+  llm_description: Set offset for this operation.
+  min: 0
+- name: status
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Status
+    zh_Hans: 状态
+  human_description:
+    en_US: Set status for this operation.
+    zh_Hans: 设置状态。
+  llm_description: Set status for this operation.
+  options:
+  - value: queued
+    label:
+      en_US: queued
+      zh_Hans: queued
+  - value: uploading
+    label:
+      en_US: uploading
+      zh_Hans: uploading
+  - value: training
+    label:
+      en_US: training
+      zh_Hans: training
+  - value: ready
+    label:
+      en_US: ready
+      zh_Hans: ready
+  - value: failed
+    label:
+      en_US: failed
+      zh_Hans: failed
+  - value: archived
+    label:
+      en_US: archived
+      zh_Hans: archived
+- name: idempotency_key
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Idempotency Key
+    zh_Hans: 幂等键
+  human_description:
+    en_US: Set idempotency key for this operation.
+    zh_Hans: 设置幂等键。
+  llm_description: Set idempotency key for this operation.
+- name: confirm
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Confirm
+    zh_Hans: 确认删除或归档
+  human_description:
+    en_US: Set true only to confirm the selected deletion or archive operation.
+    zh_Hans: 仅在确认执行删除或归档操作时设为 true。
+  llm_description: Set true only to confirm the selected deletion or archive operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/suno_custom_models.py

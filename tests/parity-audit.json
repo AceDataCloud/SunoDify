@@ -1,0 +1,310 @@
+{
+  "backend_revision": "fa94598267a82545fb1afed6ee26bafd6cbb9ca7",
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "tools": [
+    {
+      "tool": "suno_generate_audios",
+      "method": "POST",
+      "path": "/suno/audios",
+      "parameters": [
+        "lyric",
+        "model",
+        "max_mode",
+        "variety",
+        "style",
+        "variation_category",
+        "title",
+        "action",
+        "custom",
+        "prompt",
+        "lyric_prompt",
+        "audio_id",
+        "stem_type",
+        "audio_format",
+        "sound",
+        "sound_type",
+        "bpm",
+        "key",
+        "speed_multiplier",
+        "keep_pitch",
+        "mashup_audio_ids",
+        "audio_urls",
+        "weirdness",
+        "persona_id",
+        "overpainting_start",
+        "overpainting_end",
+        "samples_start",
+        "samples_end",
+        "underpainting_start",
+        "underpainting_end",
+        "continue_at",
+        "callback_url",
+        "instrumental",
+        "vocal_gender",
+        "negative_tags",
+        "style_influence",
+        "audio_weight",
+        "duration",
+        "replace_section_end",
+        "replace_section_result_mode",
+        "replace_section_start"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/09a26295-5972-4392-9318-dcd9b218f90d.json"
+    },
+    {
+      "tool": "suno_generate_lyrics",
+      "method": "POST",
+      "path": "/suno/lyrics",
+      "parameters": [
+        "model",
+        "prompt"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/c98fe4e5-73c0-462d-ad24-5080ee1fa01a.json"
+    },
+    {
+      "tool": "suno_upload_reference_audio",
+      "method": "POST",
+      "path": "/suno/upload",
+      "parameters": [
+        "audio_url",
+        "mode",
+        "name",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/8823cd83-54f6-4ea8-979a-7fa448577186.json"
+    },
+    {
+      "tool": "suno_get_mp4",
+      "method": "POST",
+      "path": "/suno/mp4",
+      "parameters": [
+        "audio_id"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/2e4c9e30-a793-4f43-9322-d682120ffff2.json"
+    },
+    {
+      "tool": "suno_get_mp3",
+      "method": "POST",
+      "path": "/suno/mp3",
+      "parameters": [
+        "audio_id",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/32141b95-043f-5845-b832-77c32ddd6fa6.json"
+    },
+    {
+      "tool": "suno_get_wav",
+      "method": "POST",
+      "path": "/suno/wav",
+      "parameters": [
+        "audio_id",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/d4004774-4d0b-4aac-a8ea-be99627880e6.json"
+    },
+    {
+      "tool": "suno_get_midi",
+      "method": "POST",
+      "path": "/suno/midi",
+      "parameters": [
+        "audio_id",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/be1de4f0-b5f5-43dc-bc7a-d2f90b2efe9c.json"
+    },
+    {
+      "tool": "suno_get_timing",
+      "method": "POST",
+      "path": "/suno/timing",
+      "parameters": [
+        "audio_id"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/da474a4e-f32a-41dc-b2fe-59cc5cea5c32.json"
+    },
+    {
+      "tool": "suno_create_vox_audio",
+      "method": "POST",
+      "path": "/suno/vox",
+      "parameters": [
+        "audio_id",
+        "vocal_start",
+        "vocal_end",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/a8d46e2d-a042-4321-ab97-a5ab1d7fed5e.json"
+    },
+    {
+      "tool": "suno_enhance_style",
+      "method": "POST",
+      "path": "/suno/style",
+      "parameters": [
+        "prompt"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/e5ff24c0-ae4e-46bb-93db-2d678610a8d3.json"
+    },
+    {
+      "tool": "suno_mashup_lyrics",
+      "method": "POST",
+      "path": "/suno/mashup-lyrics",
+      "parameters": [
+        "lyrics_a",
+        "lyrics_b"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/e0ffe8d7-c6dd-4b46-93d9-5fa6c744310c.json"
+    },
+    {
+      "tool": "suno_create_voice",
+      "method": "POST",
+      "path": "/suno/voices",
+      "parameters": [
+        "audio_url",
+        "name",
+        "description"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/1aece23f-07b3-4c21-8b2b-d93ce9bf0e84.json"
+    },
+    {
+      "tool": "suno_create_persona",
+      "method": "POST",
+      "path": "/suno/persona",
+      "parameters": [
+        "name",
+        "audio_id",
+        "vox_audio_id",
+        "vocal_start",
+        "vocal_end",
+        "description"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/c578b8de-f9fe-4220-8d5f-5da7384705fd.json"
+    },
+    {
+      "tool": "suno_list_personas",
+      "method": "GET",
+      "path": "/suno/persona",
+      "parameters": [
+        "user_id",
+        "limit",
+        "offset"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/c578b8de-f9fe-4220-8d5f-5da7384705fd.json"
+    },
+    {
+      "tool": "suno_delete_persona",
+      "method": "DELETE",
+      "path": "/suno/persona",
+      "parameters": [
+        "persona_id",
+        "user_id",
+        "confirm"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/c578b8de-f9fe-4220-8d5f-5da7384705fd.json"
+    },
+    {
+      "tool": "suno_custom_models",
+      "method": "POST",
+      "path": "/suno/custom-models",
+      "parameters": [
+        "action",
+        "name",
+        "audio_urls",
+        "callback_url",
+        "id",
+        "lyric",
+        "lyric_prompt",
+        "style",
+        "negative_tags",
+        "title",
+        "instrumental",
+        "vocal_gender",
+        "weirdness",
+        "style_influence",
+        "duration",
+        "limit",
+        "offset",
+        "status",
+        "idempotency_key",
+        "confirm"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/3620cff3-7d18-4e16-aeac-72abafdf8a81.json"
+    },
+    {
+      "tool": "suno_projects",
+      "method": "POST",
+      "path": "/suno/projects",
+      "parameters": [
+        "action",
+        "title",
+        "id",
+        "version_id",
+        "state",
+        "audio_url",
+        "callback_url",
+        "audio_id",
+        "name",
+        "start_beats",
+        "end_beats",
+        "gain",
+        "source_audio_id",
+        "model",
+        "tags",
+        "prompt",
+        "start_seconds",
+        "end_seconds",
+        "render_audio_id",
+        "stem_control_tags",
+        "batch_size",
+        "replacement_lyrics",
+        "fixed",
+        "operation_id",
+        "candidate_id",
+        "track_id",
+        "lyrics",
+        "idempotency_key"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/ea455d55-7129-44ae-80a3-bf71aae074d8.json"
+    },
+    {
+      "tool": "suno_task_retrieve",
+      "method": "POST",
+      "path": "/suno/tasks",
+      "parameters": [
+        "task_id",
+        "wait_seconds"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/f1143f0b-8146-4fc0-b02c-ac8db969392d.json"
+    },
+    {
+      "tool": "suno_tasks_retrieve_batch",
+      "method": "POST",
+      "path": "/suno/tasks",
+      "parameters": [
+        "ids"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/f1143f0b-8146-4fc0-b02c-ac8db969392d.json"
+    }
+  ],
+  "mcp_scope": "suno",
+  "notes": [
+    "Informational MCP model/action lists are represented by tool dropdowns and README capability tables.",
+    "GPT Image covers image-generation/editing/task capabilities of the broader OpenAI MCP; chat is supplied by ModelProviderDify."
+  ]
+}

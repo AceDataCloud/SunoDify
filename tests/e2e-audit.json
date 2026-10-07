@@ -1,0 +1,366 @@
+{
+  "tested_at": "2026-10-07T08:53:40.730830+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "transport": "official remote-debug; signature verification enabled",
+  "browser_test_run": true,
+  "unit_contract_tests": "46 passed, 1 warning in 1.36s",
+  "marketplace_toolkit_passed": true,
+  "package_sha256": "1932c4d2e528d2145c05290deb4648ad4763ffaac3f214dd62125a3e9e276680",
+  "exact_package_serverless_install_passed": true,
+  "marketplace_install_tested": false,
+  "cloud_tested": false,
+  "cases": [
+    {
+      "case": "Suno Primary Audio Result",
+      "tool": "suno_tasks_retrieve_batch",
+      "workflow_run_id": "c338ce1b-e7c1-4ec6-b5b7-a484343798ff",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "",
+      "media_urls": [
+        "https://cdn.acedata2.cloud/suno/3f79ee9e-e37b-46cf-804e-10833b608f8a.mp3",
+        "https://cdn.acedata2.cloud/suno/1f9f24b6-a533-4dc3-add5-7f4035dd85a4.mp3"
+      ],
+      "error": null,
+      "new_submission": false,
+      "media_verification": [
+        {
+          "case": "Suno Primary Audio Result",
+          "size": 234078,
+          "sha256": "351623d613d3a21a65c7d6d8299b5091f9665f4bbf92f70a694a508b0078541f",
+          "duration": "10.560000",
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "width": null,
+              "height": null
+            }
+          ],
+          "full_decode": true
+        },
+        {
+          "case": "Suno Primary Audio Result",
+          "size": 410742,
+          "sha256": "93da4a8a021e4a5d7b784ad197e5f8a6724e00e0f43f28786fe751d049defb34",
+          "duration": "18.264000",
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "width": null,
+              "height": null
+            }
+          ],
+          "full_decode": true
+        }
+      ],
+      "result_fields": [
+        "items"
+      ],
+      "screenshot": "evidence/suno-primary-audio-result.png",
+      "workflow": "evidence/suno-primary-audio-result-workflow.json"
+    },
+    {
+      "case": "Suno Project Create Audit",
+      "tool": "suno_projects",
+      "workflow_run_id": "4e3947ae-1993-450b-9c05-31e74b81a74b",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "039604b8-b3fe-4973-934d-14057e732bfd",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "4699af49-546e-43bf-8c26-c035c5edcb7f",
+          "trace_id": "039604b8-b3fe-4973-934d-14057e732bfd",
+          "status_code": 200,
+          "deducted_amount": 0.0,
+          "created_at": "2026-10-07T08:25:16.969269Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "data",
+        "elapsed",
+        "finished_at",
+        "started_at",
+        "success",
+        "trace_id"
+      ],
+      "screenshot": "evidence/suno-project-create-audit.png",
+      "workflow": "evidence/suno-project-create-audit-workflow.json"
+    },
+    {
+      "case": "Suno Project Readback Audit",
+      "tool": "suno_projects",
+      "workflow_run_id": "1d60c8cc-3ffb-4842-9e42-fbc706eb88b5",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "ea911173-8c10-4008-bca8-7eae3b53f88b",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "04ebbaf3-1e87-47fc-8627-c0944ef38803",
+          "trace_id": "ea911173-8c10-4008-bca8-7eae3b53f88b",
+          "status_code": 200,
+          "deducted_amount": 0.0,
+          "created_at": "2026-10-07T08:37:54.017443Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "data",
+        "elapsed",
+        "finished_at",
+        "started_at",
+        "success",
+        "trace_id"
+      ],
+      "screenshot": "evidence/suno-project-readback-audit.png",
+      "workflow": "evidence/suno-project-readback-audit-workflow.json"
+    },
+    {
+      "case": "Suno Custom Models List Audit",
+      "tool": "suno_custom_models",
+      "workflow_run_id": "3607d49e-a468-4bfa-be3d-cc4bdcbb239b",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "a1f4b385-5753-41ba-ac2b-4283c1bf2c76",
+          "trace_id": "6e98b523-9feb-4025-936a-dc8a25d69f0b",
+          "status_code": 200,
+          "deducted_amount": 0.0,
+          "created_at": "2026-10-07T08:32:55.693582Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "data",
+        "elapsed",
+        "finished_at",
+        "started_at",
+        "success"
+      ],
+      "workflow": "evidence/suno-custom-models-list-audit-workflow.json"
+    },
+    {
+      "case": "Suno Lyrics Audit",
+      "tool": "suno_generate_lyrics",
+      "workflow_run_id": "4281b6f7-20a7-42a1-a819-16122e94c705",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "e78be773-66af-4286-8941-62068ce4a6cb",
+      "trace_id": "",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "5b967863-764a-4496-80a9-42760937d1a1",
+          "trace_id": "e0091ac6-e8ca-4765-a84e-15767aad515f",
+          "status_code": 200,
+          "deducted_amount": 0.018,
+          "created_at": "2026-10-07T08:33:26.018668Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "cost",
+        "data",
+        "elapsed",
+        "finished_at",
+        "started_at",
+        "success",
+        "task_id"
+      ],
+      "screenshot": "evidence/suno-lyrics-audit.png",
+      "workflow": "evidence/suno-lyrics-audit-workflow.json"
+    },
+    {
+      "case": "Suno Style Audit",
+      "tool": "suno_enhance_style",
+      "workflow_run_id": "1ca7aa76-dfd9-4216-bd1b-ae1935f69289",
+      "workflow_status": "succeeded",
+      "service_status": "pending",
+      "task_id": "806a849f-483b-446b-ab1e-3dde4e315c17",
+      "trace_id": "bb4279ce-6b59-4469-b7f7-36ab0ac1b962",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "resolved_by": "suno-style-audit-readback",
+      "final_service_status": "succeeded",
+      "billing": [
+        {
+          "id": "f1f043e0-680b-4a5f-b8c4-296043cba1ae",
+          "trace_id": "bb4279ce-6b59-4469-b7f7-36ab0ac1b962",
+          "status_code": 200,
+          "deducted_amount": 0.036,
+          "created_at": "2026-10-07T08:33:30.773178Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "cost",
+        "data",
+        "elapsed",
+        "finished_at",
+        "started_at",
+        "success",
+        "task_id",
+        "trace_id"
+      ],
+      "screenshot": "evidence/suno-style-audit.png",
+      "workflow": "evidence/suno-style-audit-workflow.json"
+    },
+    {
+      "case": "Suno Audit Batch",
+      "tool": "suno_tasks_retrieve_batch",
+      "workflow_run_id": "b65ddef6-438c-4126-a6c9-f9ef08d31e0c",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "",
+      "media_urls": [
+        "https://cdn.acedata2.cloud/suno/0481c1ad7f216c4de39bd5c0e978c806e81d07c6a9e36c44ac39e58b87207563.jpg",
+        "https://cdn.acedata2.cloud/suno/3f79ee9e-e37b-46cf-804e-10833b608f8a.mp3",
+        "https://cdn1.suno.ai/3f79ee9e-e37b-46cf-804e-10833b608f8a.mp4",
+        "https://cdn.acedata2.cloud/suno/0adce61c6d46e10a7d96f62cdd1db23d63f6b1d73764cacb89e2d6a59c4fcafa.jpg",
+        "https://cdn.acedata2.cloud/suno/1f9f24b6-a533-4dc3-add5-7f4035dd85a4.mp3",
+        "https://cdn1.suno.ai/1f9f24b6-a533-4dc3-add5-7f4035dd85a4.mp4"
+      ],
+      "error": null,
+      "new_submission": false,
+      "resolved_by": "suno-primary-audio-result",
+      "final_service_status": "succeeded",
+      "media_verification": [
+        {
+          "case": "Suno Audit Batch",
+          "size": 11728,
+          "sha256": "a65245384ad98058de69230484430015de002b74f80849e626217b5fef2ee493",
+          "width": 360,
+          "height": 360,
+          "format": "JPEG"
+        },
+        {
+          "case": "Suno Audit Batch",
+          "size": 234078,
+          "sha256": "351623d613d3a21a65c7d6d8299b5091f9665f4bbf92f70a694a508b0078541f",
+          "duration": "10.560000",
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "width": null,
+              "height": null
+            }
+          ],
+          "full_decode": true
+        },
+        {
+          "case": "Suno Audit Batch",
+          "size": 11723,
+          "sha256": "d1cfb58ed675839dff90b9dc69ac26b66bce253c93068a6b6acea9a77a19fdbb",
+          "width": 360,
+          "height": 360,
+          "format": "JPEG"
+        },
+        {
+          "case": "Suno Audit Batch",
+          "size": 410742,
+          "sha256": "93da4a8a021e4a5d7b784ad197e5f8a6724e00e0f43f28786fe751d049defb34",
+          "duration": "18.264000",
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio",
+              "width": null,
+              "height": null
+            }
+          ],
+          "full_decode": true
+        }
+      ],
+      "result_fields": [
+        "items"
+      ],
+      "screenshot": "evidence/suno-audit-batch.png",
+      "workflow": "evidence/suno-audit-batch-workflow.json"
+    },
+    {
+      "case": "Suno Style Audit Readback",
+      "tool": "suno_task_retrieve",
+      "workflow_run_id": "96312636-4e7a-4b8c-a679-839d0418a511",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "806a849f-483b-446b-ab1e-3dde4e315c17",
+      "trace_id": "bb4279ce-6b59-4469-b7f7-36ab0ac1b962",
+      "media_urls": [],
+      "error": null,
+      "new_submission": false,
+      "media_verification": [],
+      "result_fields": [
+        "cost",
+        "data",
+        "success",
+        "task_id",
+        "trace_id"
+      ],
+      "screenshot": "evidence/suno-style-audit-readback.png",
+      "workflow": "evidence/suno-style-audit-readback-workflow.json"
+    },
+    {
+      "case": "Suno Lyrics Mashup Audit",
+      "tool": "suno_mashup_lyrics",
+      "workflow_run_id": "8720841c-53de-4a1f-a32f-9a97baee479e",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "01c69031-b6fe-4a64-9b7d-13897fcc84b3",
+      "trace_id": "",
+      "media_urls": [],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "79d1dae2-ad43-4f62-b655-04d1742d6a2f",
+          "trace_id": "7886a769-c602-4f8a-b41d-e8efedd9cd40",
+          "status_code": 200,
+          "deducted_amount": 0.018,
+          "created_at": "2026-10-07T08:34:03.040525Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [],
+      "result_fields": [
+        "cost",
+        "data",
+        "elapsed",
+        "finished_at",
+        "started_at",
+        "success",
+        "task_id"
+      ],
+      "screenshot": "evidence/suno-lyrics-mashup-audit.png",
+      "workflow": "evidence/suno-lyrics-mashup-audit-workflow.json"
+    }
+  ],
+  "primary_blocked": false,
+  "scope_note": "Recorded cases only. Batch regressions reuse earlier paid successful tasks; those media generations are not billed or claimed as new. New paid calls have separate usage reconciliation. Optional untested models/actions are not claimed as passed; original failures and their corrections are preserved."
+}
