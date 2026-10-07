@@ -65,14 +65,9 @@ parameters:
     zh_Hans: 参考音频链接
   human_description:
     en_US: Set audio urls for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 6 至 24 个互不重复、可公开访问的 HTTPS 音频 URL。音频必须已取得模型创建与生成授权。 数组或对象请使用 JSON 格式。
   llm_description: Set audio urls for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable.
+    where applicable.
 - name: callback_url
   type: string
   required: false

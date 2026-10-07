@@ -489,14 +489,10 @@ parameters:
     zh_Hans: 混音音频 ID 列表
   human_description:
     en_US: Set mashup audio ids for this operation. Enter a JSON array or object where
-      applicable. Enter a JSON array or object where applicable. Enter a JSON array
-      or object where applicable. Enter a JSON array or object where applicable. Enter
-      a JSON array or object where applicable.
+      applicable.
     zh_Hans: 用于混音混搭的音频 ID 列表。当 `action` 为 `mashup` 时，此字段必填。 数组或对象请使用 JSON 格式。
   llm_description: Set mashup audio ids for this operation. Enter a JSON array or
-    object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable.
+    object where applicable.
 - name: audio_urls
   type: string
   required: false
@@ -506,15 +502,10 @@ parameters:
     zh_Hans: 参考音频链接
   human_description:
     en_US: Set audio urls for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 用于 Inspo 灵感创作功能的参考音频 URL 列表，需提供 1 到 4 个公开可访问的 HTTP(S) 音频地址。当 `action`
       为 `inspo` 时，此字段必填。 数组或对象请使用 JSON 格式。
   llm_description: Set audio urls for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable.
+    where applicable.
 - name: weirdness
   type: number
   required: false

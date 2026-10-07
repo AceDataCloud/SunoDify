@@ -107,14 +107,9 @@ parameters:
     zh_Hans: 项目状态
   human_description:
     en_US: Set state for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 工程 timing.bps 为每秒拍数，默认为 2，必须为正数。片段位置使用工程拍单位。 数组或对象请使用 JSON 格式。
   llm_description: Set state for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable.
+    applicable.
 - name: audio_url
   type: string
   required: false

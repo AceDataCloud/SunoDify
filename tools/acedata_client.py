@@ -70,6 +70,7 @@ def clean_result(value: Any) -> Any:
 
 def media_urls(value: Any) -> list[str]:
     result: list[str] = []
+    audio_result: list[str] = []
 
     def walk(node: Any) -> None:
         if isinstance(node, dict):
@@ -80,6 +81,8 @@ def media_urls(value: Any) -> list[str]:
                     and item.startswith(("https://", "http://"))
                 ):
                     result.append(item)
+                    if key == "audio_url":
+                        audio_result.append(item)
                 elif isinstance(item, (dict, list)):
                     walk(item)
         elif isinstance(node, list):
@@ -87,7 +90,7 @@ def media_urls(value: Any) -> list[str]:
                 walk(item)
 
     walk(value)
-    return list(dict.fromkeys(result))
+    return list(dict.fromkeys(audio_result or result))
 
 
 def parse_json(value: Any, name: str, *, lines: bool = False) -> Any:
