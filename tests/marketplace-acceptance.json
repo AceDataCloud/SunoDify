@@ -1,0 +1,32 @@
+{
+  "repo": "SunoDify",
+  "marketplace_url": "https://marketplace.dify.ai/plugin/acedatacloud/suno",
+  "identifier": "acedatacloud/suno:0.0.1@57cee3e163cb5044b8fa2684baa394d5a3fd40ec1ba6640f8ef9ff7681f21d0d",
+  "installation_source": "marketplace",
+  "workflow_id": "9fa87635-831a-48f6-9324-7af419f15859",
+  "workflow_status": "succeeded",
+  "service_status": "succeeded",
+  "case": "Suno Marketplace Installed",
+  "media_urls": [
+    "https://cdn.acedata2.cloud/suno/3f79ee9e-e37b-46cf-804e-10833b608f8a.mp3",
+    "https://cdn.acedata2.cloud/suno/1f9f24b6-a533-4dc3-add5-7f4035dd85a4.mp3"
+  ],
+  "outputs": {
+    "status": "succeeded",
+    "success": true,
+    "task_id": "",
+    "trace_id": ""
+  },
+  "icon_matches_source": true,
+  "paid_generation_reused": true,
+  "prior_media_decode_evidence": true,
+  "media_readback_status": "completed existing task output; generation not repeated",
+  "tested_at": "2026-10-08T01:26:57.567309+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "signature_verification_enabled": true,
+  "remote_debug_used": false,
+  "marketplace_install_tested": true,
+  "cloud_tested": false,
+  "screenshot": "evidence/marketplace-20261008.png",
+  "workflow": "evidence/marketplace-20261008-workflow.json"
+}
