@@ -6,12 +6,7 @@ app:
   mode: workflow
   name: Suno Step-by-step Tutorial
   use_icon_as_answer_icon: false
-dependencies:
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: acedatacloud/suno:0.0.1@57cee3e163cb5044b8fa2684baa394d5a3fd40ec1ba6640f8ef9ff7681f21d0d
-    version: null
+dependencies: []
 kind: app
 version: 0.7.0
 workflow:
@@ -86,7 +81,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/suno:0.0.1@57cee3e163cb5044b8fa2684baa394d5a3fd40ec1ba6640f8ef9ff7681f21d0d
         provider_id: acedatacloud/suno/suno
         provider_name: acedatacloud/suno/suno
         provider_type: builtin
@@ -136,7 +130,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/suno:0.0.1@57cee3e163cb5044b8fa2684baa394d5a3fd40ec1ba6640f8ef9ff7681f21d0d
         provider_id: acedatacloud/suno/suno
         provider_name: acedatacloud/suno/suno
         provider_type: builtin
