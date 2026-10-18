@@ -1,12 +1,12 @@
-version: 0.0.3
+version: 0.0.4
 type: plugin
 author: acedatacloud
 name: suno
 label:
-  en_US: Suno
-  ja_JP: Suno
-  zh_Hans: Suno
-  pt_BR: Suno
+  en_US: Suno by Ace Data Cloud
+  ja_JP: Suno by Ace Data Cloud
+  zh_Hans: Suno by Ace Data Cloud
+  pt_BR: Suno by Ace Data Cloud
 description:
   en_US: Generate music via Ace Data Cloud Suno APIs.
   ja_JP: Ace Data Cloud Suno API を使って音楽生成を行います。
@@ -14,6 +14,8 @@ description:
   pt_BR: Gere músicas via Ace Data Cloud Suno APIs.
 icon: icon.jpg
 icon_dark: icon.jpg
+tags:
+  - entertainment
 resource:
   memory: 268435456
   permission:
