@@ -1,5 +1,9 @@
 # Suno for Dify: step-by-step guide
 
+**Suno by Ace Data Cloud** is the independently installable Ace integration, not an official Suno account or endorsement. The plugin is free; service requests follow your Ace account permissions and current pricing.
+
+**Release status:** the explicit provider label, Marketplace `entertainment` category and in-product Applications link are prepared for 0.0.4; source review and Marketplace publication are still pending. The current public version remains 0.0.3. Existing screenshots are real historical interface captures, not screenshots of this metadata update.
+
 Generate instrumental music and retrieve the completed audio. This guide takes you from your first API key to the result in a Dify Workflow. Screenshots use Dify CE 1.17.1 in English; later versions may move the same controls.
 
 [Read in Simplified Chinese](https://github.com/AceDataCloud/SunoDify/blob/main/readme/README_zh_Hans.md) · [API and pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunodify_readme_pricing)
